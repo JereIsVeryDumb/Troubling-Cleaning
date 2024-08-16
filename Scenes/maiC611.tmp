@@ -1,0 +1,500 @@
+[gd_scene load_steps=31 format=3 uid="uid://b5vt7msbv4la4"]
+
+[ext_resource type="PackedScene" uid="uid://25vbvdnhq60m" path="res://Scenes/player.tscn" id="1_5njv3"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_aj0km"]
+[ext_resource type="Texture2D" uid="uid://c573f777msu3g" path="res://Assets/Place holder floor.png" id="2_y0pyr"]
+[ext_resource type="Script" path="res://Scripts/ikkuna.gd" id="3_p1uq6"]
+[ext_resource type="Texture2D" uid="uid://bcpysjdpsc65e" path="res://Assets/Tuhkanen Ikkuna.png" id="4_1u7l2"]
+[ext_resource type="Texture2D" uid="uid://dmml5isebh784" path="res://Assets/Tuhkanen Ikkuna (1).png" id="5_6mq7b"]
+[ext_resource type="Texture2D" uid="uid://cmfk6u412yjim" path="res://Assets/Tuhkanen Ikkuna-17.png.png" id="6_5laa8"]
+[ext_resource type="Texture2D" uid="uid://m1oxegh1br38" path="res://Assets/hOTTUB.png" id="7_5rhdl"]
+[ext_resource type="FontFile" uid="uid://bmsuh2ynrvpfm" path="res://Assets/elv-pixels-11.ttf" id="9_xdkqg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_egckw"]
+size = Vector2(651, 18)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfw5y"]
+size = Vector2(12.3029, 9.2914)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1eff"]
+size = Vector2(18, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqibr"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6vdo"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vb6jo"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlftr"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dra1n"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q56s6"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ihsyt"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5taeg"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vpdm4"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tloyh"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3oejd"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxskm"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whn6b"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bw611"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvgjx"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy2ba"]
+atlas = ExtResource("5_6mq7b")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wyk3i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_1u7l2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqibr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6vdo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vb6jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlftr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dra1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q56s6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ihsyt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5taeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vpdm4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tloyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3oejd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxskm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whn6b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bw611")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvgjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy2ba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5laa8")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pdrx1"]
+font = ExtResource("9_xdkqg")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_aj0km")
+
+[node name="Player" parent="." instance=ExtResource("1_5njv3")]
+position = Vector2(39, 536)
+scale = Vector2(0.655, 0.655)
+
+[node name="Ground" type="Node2D" parent="."]
+position = Vector2(29, 613)
+scale = Vector2(3.49, 3.49)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
+position = Vector2(315.5, 1)
+shape = SubResource("RectangleShape2D_egckw")
+
+[node name="Floor" type="Node2D" parent="Ground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(16, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D3" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(32, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D4" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(48, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D5" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(64, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D6" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(80, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D7" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(96, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D8" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(112, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D9" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(128, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D10" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(144, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D11" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(160, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D12" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(176, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D13" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(192, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D14" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(208, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D15" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(224, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D16" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(240, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D17" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(257, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D18" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(273, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D19" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(289, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D20" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(305, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D21" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(321, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D22" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(337, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D23" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(353, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D24" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(369, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D25" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(385, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D26" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(401, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D27" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(417, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D28" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(433, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D29" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(449, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D30" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(465, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D31" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(481, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D32" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(497, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D33" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(513, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D34" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(529, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D35" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(545, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D36" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(561, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D37" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(577, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D38" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(593, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D39" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(609, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D40" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(626, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D41" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(642, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D42" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(658, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D43" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(674, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D44" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(690, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D45" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(706, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D46" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(722, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D47" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(738, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D48" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(754, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D49" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(770, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D50" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(786, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D51" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(802, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D52" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(818, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D53" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(834, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D54" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(850, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Sprite2D55" type="Sprite2D" parent="Ground/Floor"]
+texture_filter = 1
+position = Vector2(866, 0)
+texture = ExtResource("2_y0pyr")
+
+[node name="Hottub" type="Area2D" parent="."]
+position = Vector2(-7.62939e-06, 3.8147e-06)
+scale = Vector2(1, 1)
+
+[node name="Sprite2D" type="Sprite2D" parent="Hottub"]
+texture_filter = 1
+position = Vector2(330, 555)
+scale = Vector2(3.485, 3.485)
+texture = ExtResource("7_5rhdl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hottub"]
+position = Vector2(326.725, 557.225)
+scale = Vector2(5.645, 5.645)
+shape = SubResource("RectangleShape2D_kfw5y")
+
+[node name="Ikkuna" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(-115, 64)
+scale = Vector2(4.37, 4.37)
+script = ExtResource("3_p1uq6")
+
+[node name="Area2D" type="Area2D" parent="Ikkuna"]
+position = Vector2(37, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ikkuna/Area2D"]
+shape = SubResource("RectangleShape2D_a1eff")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ikkuna"]
+texture_filter = 1
+position = Vector2(37.2998, 21.2815)
+sprite_frames = SubResource("SpriteFrames_wyk3i")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 279.0
+offset_right = 321.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_pdrx1")
+
+[node name="Ammo_Count" type="TextureProgressBar" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Ammo" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="ReloadTimer" type="Timer" parent="CanvasLayer"]
+
+[connection signal="body_entered" from="Hottub" to="Player" method="_on_hottub_body_entered"]
+[connection signal="area_entered" from="Ikkuna/Area2D" to="Ikkuna" method="_on_area_2d_area_entered"]
