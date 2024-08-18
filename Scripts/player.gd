@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed = 350
 @export var jump_speed = -1200
 @export var gravity = 4000
-@export_range(0.0, 1.0) var friction = 0.1
+@export_range(0.0, 1.0) var friction = 0.2
 @export_range(0.0, 1.0) var acceleration = 0.25
 @export var bullet_scene = preload("res://Scenes/bullet.tscn") as PackedScene
 @onready var ammo_count = $"../CanvasLayer/Ammo"
@@ -13,7 +13,7 @@ extends CharacterBody2D
 
 @onready var screensize = get_viewport_rect().size
 var ammo = 3
-var upndown = Input.get_axis("Lookup", "Lookdown")
+var upndown = Input.get_axis("Lookup", "Aimdown")
 
 func _ready():
 	start()
@@ -59,7 +59,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("Shoot") and ammo > 0:
 		shoot()
-
+	
 func shoot():
 	var b = bullet_scene.instantiate() as Area2D
 	get_tree().root.add_child(b)
@@ -70,9 +70,9 @@ func shoot():
 	if ammo >= 0:
 		ammo_count.text = str(ammo)
 	
-	if Input.is_action_pressed("Lookup"):
+	if Input.is_action_pressed("AimUp"):
 		bullet_direction = Vector2(0, -1)
-	elif Input.is_action_pressed("Lookdown"):
+	elif Input.is_action_pressed("Aimdown"):
 		bullet_direction = Vector2(0, 1)
 	else:
 		bullet_direction = Vector2(current_direction, 0)
@@ -88,6 +88,3 @@ func _on_hottub_body_entered(body):
 			reload_timer.start()
 func _on_reload_timer_timeout():
 	print("Timer timed out!")
-
-
-

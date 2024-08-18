@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b5vt7msbv4la4"]
+[gd_scene load_steps=46 format=3 uid="uid://b5vt7msbv4la4"]
 
 [ext_resource type="PackedScene" uid="uid://25vbvdnhq60m" path="res://Scenes/player.tscn" id="1_5njv3"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_aj0km"]
@@ -10,6 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://m1oxegh1br38" path="res://Assets/hOTTUB.png" id="7_5rhdl"]
 [ext_resource type="FontFile" uid="uid://bmsuh2ynrvpfm" path="res://Assets/elv-pixels-11.ttf" id="9_xdkqg"]
 [ext_resource type="Script" path="res://Scripts/level_change.gd" id="10_jdhki"]
+[ext_resource type="Texture2D" uid="uid://bj11dmw6m858u" path="res://Assets/Playbutton.png" id="11_bq4fc"]
+[ext_resource type="Script" path="res://Scripts/pausemenu.gd" id="11_ox16n"]
+[ext_resource type="Texture2D" uid="uid://b7hnw55yi0b4p" path="res://Assets/RestartLevel.png" id="12_kd8q1"]
+[ext_resource type="Texture2D" uid="uid://25n56j1kbhwq" path="res://Assets/Settings Button.png" id="13_d3qby"]
+[ext_resource type="Texture2D" uid="uid://bi7hol7fhs3se" path="res://Assets/Quit.png" id="14_64wqw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1eff"]
 size = Vector2(18, 18)
@@ -141,20 +146,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_egckw"]
-size = Vector2(651, 18)
+size = Vector2(880.409, 18)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kfw5y"]
 size = Vector2(12.3029, 9.2914)
-
-[sub_resource type="LabelSettings" id="LabelSettings_pdrx1"]
-font = ExtResource("9_xdkqg")
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_ht7gk"]
-font = ExtResource("9_xdkqg")
-outline_size = 4
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8egdp"]
 size = Vector2(62, 101)
@@ -165,6 +160,42 @@ colors = PackedColorArray(0, 0, 0, 1, 0.746753, 0.746753, 0.746753, 1, 1, 1, 1, 
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_a5qvi"]
 gradient = SubResource("Gradient_fx7ad")
+
+[sub_resource type="LabelSettings" id="LabelSettings_j0loy"]
+font = ExtResource("9_xdkqg")
+font_size = 18
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_xtq4w"]
+font = ExtResource("9_xdkqg")
+font_size = 18
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pdrx1"]
+font = ExtResource("9_xdkqg")
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_iwtq8"]
+font = ExtResource("9_xdkqg")
+font_size = 18
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ht7gk"]
+font = ExtResource("9_xdkqg")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Theme" id="Theme_0mi72"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_16sfs"]
+font = ExtResource("9_xdkqg")
+font_size = 19
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_aj0km")
@@ -494,36 +525,8 @@ shape = SubResource("RectangleShape2D_kfw5y")
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Timer" type="Timer" parent="CanvasLayer"]
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-texture_filter = 1
-offset_left = 279.0
-offset_right = 321.0
-offset_bottom = 23.0
-label_settings = SubResource("LabelSettings_pdrx1")
-
-[node name="Ammo_Count" type="TextureProgressBar" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Ammo" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-
-[node name="ReloadTimer" type="Timer" parent="CanvasLayer"]
-one_shot = true
-
-[node name="ReloadTimerLabel" type="Label" parent="CanvasLayer"]
-offset_left = 321.0
-offset_top = 521.0
-offset_right = 361.0
-offset_bottom = 544.0
-label_settings = SubResource("LabelSettings_ht7gk")
-
 [node name="Flagpole" type="Area2D" parent="."]
+position = Vector2(3, 154)
 script = ExtResource("10_jdhki")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flagpole"]
@@ -543,7 +546,8 @@ scale = Vector2(0.11, 0.785)
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground2"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2/StaticBody2D"]
-position = Vector2(315.5, 1)
+position = Vector2(431.364, 1)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_egckw")
 
 [node name="Floor" type="Node2D" parent="Ground2"]
@@ -829,7 +833,8 @@ scale = Vector2(0.11, 0.785)
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground3"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3/StaticBody2D"]
-position = Vector2(315.5, 1)
+position = Vector2(436.364, -4.64916e-06)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_egckw")
 
 [node name="Floor" type="Node2D" parent="Ground3"]
@@ -1115,7 +1120,7 @@ scale = Vector2(0.11, 0.785)
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground4"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4/StaticBody2D"]
-position = Vector2(315.5, 1)
+position = Vector2(445.455, -4.52995e-06)
 shape = SubResource("RectangleShape2D_egckw")
 
 [node name="Floor" type="Node2D" parent="Ground4"]
@@ -1394,6 +1399,92 @@ texture_filter = 1
 position = Vector2(866, 0)
 texture = ExtResource("2_y0pyr")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label2" type="Label" parent="CanvasLayer"]
+offset_left = 99.0
+offset_top = 28.0
+offset_right = 237.0
+offset_bottom = 52.0
+scale = Vector2(1.36, 1.36)
+text = "Things cleaned"
+label_settings = SubResource("LabelSettings_j0loy")
+
+[node name="ObjectiveCount" type="Label" parent="CanvasLayer"]
+offset_left = 158.0
+offset_top = 52.0
+offset_right = 191.0
+offset_bottom = 76.0
+scale = Vector2(1.6, 1.6)
+text = " / 5"
+label_settings = SubResource("LabelSettings_xtq4w")
+
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+offset_left = 279.0
+offset_right = 321.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_pdrx1")
+
+[node name="Ammo_Count" type="TextureProgressBar" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Ammo" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_iwtq8")
+
+[node name="ReloadTimer" type="Timer" parent="CanvasLayer"]
+one_shot = true
+
+[node name="ReloadTimerLabel" type="Label" parent="CanvasLayer"]
+offset_left = 321.0
+offset_top = 521.0
+offset_right = 361.0
+offset_bottom = 544.0
+label_settings = SubResource("LabelSettings_ht7gk")
+
+[node name="Pausemenu" type="VBoxContainer" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+offset_left = 114.0
+offset_top = 73.0
+offset_right = 186.0
+offset_bottom = 393.0
+scale = Vector2(1.56263, 1.58788)
+alignment = 1
+script = ExtResource("11_ox16n")
+
+[node name="Label" type="Label" parent="CanvasLayer/Pausemenu"]
+layout_mode = 2
+theme = SubResource("Theme_0mi72")
+text = "Paused"
+label_settings = SubResource("LabelSettings_16sfs")
+
+[node name="Resume" type="Button" parent="CanvasLayer/Pausemenu"]
+layout_mode = 2
+icon = ExtResource("11_bq4fc")
+
+[node name="Restart" type="Button" parent="CanvasLayer/Pausemenu"]
+layout_mode = 2
+icon = ExtResource("12_kd8q1")
+icon_alignment = 1
+
+[node name="Settings" type="Button" parent="CanvasLayer/Pausemenu"]
+layout_mode = 2
+icon = ExtResource("13_d3qby")
+
+[node name="Quit" type="Button" parent="CanvasLayer/Pausemenu"]
+layout_mode = 2
+icon = ExtResource("14_64wqw")
+
 [connection signal="area_entered" from="Ikkuna/Area2D" to="Ikkuna" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Hottub" to="Player" method="_on_hottub_body_entered"]
 [connection signal="body_exited" from="Hottub" to="Player" method="_on_hottub_body_exited"]
+[connection signal="pressed" from="CanvasLayer/Pausemenu/Resume" to="CanvasLayer/Pausemenu" method="_on_resume_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pausemenu/Restart" to="CanvasLayer/Pausemenu" method="_on_restart_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pausemenu/Settings" to="CanvasLayer/Pausemenu" method="_on_settings_pressed"]
+[connection signal="pressed" from="CanvasLayer/Pausemenu/Quit" to="CanvasLayer/Pausemenu" method="_on_quit_pressed"]

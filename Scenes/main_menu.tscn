@@ -1,0 +1,76 @@
+[gd_scene load_steps=9 format=3 uid="uid://cndwqtpo0d0sl"]
+
+[ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tb0kk"]
+[ext_resource type="Texture2D" uid="uid://bj11dmw6m858u" path="res://Assets/Playbutton.png" id="2_6slwk"]
+[ext_resource type="Texture2D" uid="uid://ouikcxxm1ee0" path="res://Assets/Rpkk.png" id="2_hp1og"]
+[ext_resource type="FontFile" uid="uid://bmsuh2ynrvpfm" path="res://Assets/elv-pixels-11.ttf" id="3_sc6ni"]
+[ext_resource type="Texture2D" uid="uid://25n56j1kbhwq" path="res://Assets/Settings Button.png" id="4_hwh7c"]
+[ext_resource type="Texture2D" uid="uid://bi7hol7fhs3se" path="res://Assets/Quit.png" id="6_amhrj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_fyo21"]
+font = ExtResource("3_sc6ni")
+font_color = Color(1, 1, 0.188235, 1)
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 8
+shadow_color = Color(0.0196078, 0.0156863, 0.00784314, 1)
+
+[sub_resource type="Theme" id="Theme_mof45"]
+
+[node name="Main Menu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tb0kk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(180.75, 327.5)
+scale = Vector2(7.61, 6.52741)
+texture = ExtResource("2_hp1og")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 28.0
+offset_right = 147.0
+offset_bottom = 51.0
+scale = Vector2(2.44, 2.44)
+text = "Troubling Cleaning"
+label_settings = SubResource("LabelSettings_fyo21")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 526.0
+offset_right = 223.0
+offset_bottom = 598.0
+scale = Vector2(1.64, 1.64)
+focus_neighbor_left = NodePath("Settingsbutton")
+focus_neighbor_right = NodePath("Quit")
+focus_mode = 2
+alignment = 1
+
+[node name="Settingsbutton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+icon = ExtResource("4_hwh7c")
+flat = true
+
+[node name="Playbutton" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+focus_neighbor_left = NodePath("../Settingsbutton")
+focus_neighbor_right = NodePath("../Quit")
+theme_type_variation = &"FlatButton"
+theme_override_icons/icon = ExtResource("2_6slwk")
+
+[node name="Quit" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_mof45")
+icon = ExtResource("6_amhrj")
+flat = true
+
+[connection signal="pressed" from="HBoxContainer/Playbutton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_quit_pressed"]
