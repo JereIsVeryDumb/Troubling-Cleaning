@@ -29,7 +29,7 @@ func _ready():
 	ammo_count.text = str(ammo)
 	reload_timer.connect("timeout", Callable(self, "_on_reload_timer_timeout"))
 	interact_timer.connect("timeout", Callable(self, "_on_trash_timer_timeout"))
-
+	trash_timer_label.visible = false
 func start():
 	position = Vector2(28,28)
 
@@ -53,7 +53,7 @@ func _physics_process(delta):
 		speed = 0
 		jump_speed = 0
 		interact_timer.start(5.1)
-		
+		trash_timer_label.position.x = 1
 		if current_direction == _direction.RIGHT:
 			mop_animator.play("Mopping")
 		elif current_direction == _direction.LEFT:
@@ -127,10 +127,12 @@ func _on_reload_timer_timeout():
 
 func _on_trash_body_entered(body):
 	is_in_trash_area = true
+	trash_timer_label.visible = true
 
 func _on_trash_body_exited(body: Node2D) -> void:
 	is_in_trash_area = false
 	mop_animator.stop()
+	trash_timer_label.visible = false
 
 func _on_trash_timer_timeout() -> void:
 	speed = 350

@@ -155,7 +155,7 @@ wait_time = 0.5
 one_shot = true
 
 [node name="Mop" type="Sprite2D" parent="."]
-position = Vector2(17, 13)
+position = Vector2(15, -3)
 scale = Vector2(2.96, 2.96)
 texture = ExtResource("3_pvjcw")
 flip_v = true

@@ -211,10 +211,9 @@ position = Vector2(180, 375)
 scale = Vector2(7.34414, 7.57141)
 texture = ExtResource("2_5hnn6")
 
-[node name="Trash" type="Area2D" parent="."]
+[node name="Trash" type="Area2D" parent="." groups=["TrashGroup"]]
 position = Vector2(206, 564)
 scale = Vector2(2.32, 2.32)
-collision_layer = 8
 script = ExtResource("2_7xt7g")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trash"]
@@ -229,15 +228,13 @@ wait_time = 5.0
 one_shot = true
 
 [node name="Trash_Timer_Label" type="Label" parent="Trash"]
-offset_left = -31.8966
-offset_top = -17.2414
-offset_right = 137.103
-offset_bottom = 6.75862
-scale = Vector2(0.372773, 0.372773)
-text = "Press \"E\" to sweep"
+offset_left = -17.2414
+offset_top = -28.8793
+offset_right = 22.7586
+offset_bottom = -5.87931
 label_settings = SubResource("LabelSettings_bwf34")
 
-[node name="Ikkuna" type="Node2D" parent="."]
+[node name="Ikkuna" type="StaticBody2D" parent="."]
 texture_filter = 1
 position = Vector2(-115, 65)
 scale = Vector2(4.37, 4.37)
@@ -245,8 +242,6 @@ script = ExtResource("3_p1uq6")
 
 [node name="Area2D" type="Area2D" parent="Ikkuna"]
 position = Vector2(37, 21)
-collision_layer = 2
-collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ikkuna/Area2D"]
 shape = SubResource("RectangleShape2D_a1eff")
@@ -256,7 +251,11 @@ texture_filter = 1
 position = Vector2(37.2998, 21.2815)
 sprite_frames = SubResource("SpriteFrames_wyk3i")
 
-[node name="Ikkuna2" type="Node2D" parent="."]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ikkuna"]
+position = Vector2(36.8421, 20.3661)
+shape = SubResource("RectangleShape2D_a1eff")
+
+[node name="Ikkuna2" type="StaticBody2D" parent="."]
 texture_filter = 1
 position = Vector2(147, 321)
 scale = Vector2(4.37, 4.37)
@@ -264,8 +263,6 @@ script = ExtResource("9_pm7by")
 
 [node name="Area2D" type="Area2D" parent="Ikkuna2"]
 position = Vector2(37, 21)
-collision_layer = 2
-collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ikkuna2/Area2D"]
 shape = SubResource("RectangleShape2D_a1eff")
@@ -275,10 +272,13 @@ texture_filter = 1
 position = Vector2(37.2998, 21.2815)
 sprite_frames = SubResource("SpriteFrames_wyk3i")
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ikkuna2"]
+position = Vector2(36.8421, 20.8238)
+shape = SubResource("RectangleShape2D_a1eff")
+
 [node name="Player" parent="." instance=ExtResource("1_5njv3")]
 position = Vector2(168, 390)
 scale = Vector2(0.655, 0.655)
-collision_mask = 3
 
 [node name="Ground" type="Node2D" parent="."]
 position = Vector2(29, 613)
@@ -286,8 +286,6 @@ scale = Vector2(3.49, 3.49)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
 texture_filter = 1
-collision_layer = 2
-collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
 position = Vector2(315.5, 1)
@@ -600,8 +598,6 @@ position = Vector2(261, 473)
 scale = Vector2(0.11, 0.785)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground2"]
-collision_layer = 2
-collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground2/StaticBody2D"]
 position = Vector2(431.364, 1)
@@ -888,8 +884,6 @@ position = Vector2(1, 369)
 scale = Vector2(0.11, 0.785)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground3"]
-collision_layer = 2
-collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground3/StaticBody2D"]
 position = Vector2(436.364, -4.64916e-06)
@@ -1176,8 +1170,6 @@ position = Vector2(270, 281)
 scale = Vector2(0.11, 0.785)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground4"]
-collision_layer = 2
-collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground4/StaticBody2D"]
 position = Vector2(445.455, -4.52995e-06)
