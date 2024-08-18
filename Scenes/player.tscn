@@ -1,17 +1,144 @@
-[gd_scene load_steps=4 format=3 uid="uid://25vbvdnhq60m"]
+[gd_scene load_steps=13 format=3 uid="uid://25vbvdnhq60m"]
 
 [ext_resource type="Texture2D" uid="uid://dfb31t80l50y0" path="res://Assets/New Piskel.png" id="1_5eivu"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_eafjl"]
+[ext_resource type="Texture2D" uid="uid://hvuts6hq0dis" path="res://Assets/Brush Mop.png" id="3_pvjcw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onbm2"]
 size = Vector2(66, 70)
 
+[sub_resource type="Animation" id="Animation_bf3n1"]
+resource_name = "Flick"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -2.0944, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_jhbo8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1udli"]
+resource_name = "Flick_left"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 2.0944, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rcdk7"]
+resource_name = "Flick_down"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_1u1nb"]
+resource_name = "Flick_up"
+length = 0.2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -1.5708, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_w1d6e"]
+resource_name = "Mopping"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ko7fp"]
+resource_name = "Mopping_left"
+length = 0.4
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5708, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dbn4f"]
+_data = {
+"Flick": SubResource("Animation_bf3n1"),
+"Flick_down": SubResource("Animation_rcdk7"),
+"Flick_left": SubResource("Animation_1udli"),
+"Flick_up": SubResource("Animation_1u1nb"),
+"Mopping": SubResource("Animation_w1d6e"),
+"Mopping_left": SubResource("Animation_ko7fp"),
+"RESET": SubResource("Animation_jhbo8")
+}
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_eafjl")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -2)
-shape = SubResource("RectangleShape2D_onbm2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -19,10 +146,24 @@ position = Vector2(2.00002, 4.00002)
 scale = Vector2(4.9375, 4.9375)
 texture = ExtResource("1_5eivu")
 
-[node name="Marker2D" type="Marker2D" parent="Sprite2D"]
-position = Vector2(2.43038, 0.607591)
-scale = Vector2(0.202532, 0.202532)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, -2)
+shape = SubResource("RectangleShape2D_onbm2")
 
 [node name="Cooldown" type="Timer" parent="."]
 wait_time = 0.5
 one_shot = true
+
+[node name="Mop" type="Sprite2D" parent="."]
+position = Vector2(17, 13)
+scale = Vector2(2.96, 2.96)
+texture = ExtResource("3_pvjcw")
+flip_v = true
+
+[node name="Marker2D" type="Marker2D" parent="Mop"]
+position = Vector2(4.05405, 5.74324)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mop"]
+libraries = {
+"": SubResource("AnimationLibrary_dbn4f")
+}

@@ -10,6 +10,15 @@ extends CharacterBody2D
 @onready var ammo_count = $"../CanvasLayer/Ammo"
 @onready var reload_timer = $"../CanvasLayer/ReloadTimer"
 @onready var reload_label = $"../CanvasLayer/ReloadTimerLabel"
+@onready var mop_animator = $Mop/AnimationPlayer
+@onready var interact_timer = $"../Trash/TrashTimer"
+@onready var trash_timer_label = $"../Trash/Trash_Timer_Label"
+@onready var trash_node = $"../Trash"  # Reference to the trash node
+
+var is_in_trash_area = false
+var is_trash_interactive = true  # Flag to control if the trash is interactive
+
+@onready var bullet_spawn_sprite = $Mop/Marker2D
 
 @onready var screensize = get_viewport_rect().size
 var ammo = 3
@@ -19,9 +28,10 @@ func _ready():
 	start()
 	ammo_count.text = str(ammo)
 	reload_timer.connect("timeout", Callable(self, "_on_reload_timer_timeout"))
+	interact_timer.connect("timeout", Callable(self, "_on_trash_timer_timeout"))
 
 func start():
-	position = Vector2(screensize.x / 2, screensize.y - 64)
+	position = Vector2(28,28)
 
 enum _direction { LEFT = -1, RIGHT = 1, UP = -2, DOWN = 2 }
 
@@ -36,19 +46,35 @@ func _physics_process(delta):
 	var dir = Input.get_axis("Left", "Right")
 	position = position.clamp(Vector2(8, 8), screensize - Vector2(8, 8))
 	
+	if interact_timer.is_stopped() == false:
+		trash_timer_label.text = '%02d' % int(ceil(interact_timer.time_left))
+	
+	if is_in_trash_area and is_trash_interactive and Input.is_action_pressed("Interact"):
+		speed = 0
+		jump_speed = 0
+		interact_timer.start(5.1)
+		
+		if current_direction == _direction.RIGHT:
+			mop_animator.play("Mopping")
+		elif current_direction == _direction.LEFT:
+			mop_animator.play("Mopping_left")
 	
 	var s = reload_timer.time_left
-	
 	reload_label.text = '%02d' % [s]
+
 	if dir != 0:
 		velocity.x = lerp(velocity.x, dir * speed, acceleration)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction)
 
 	if dir > 0:
+		$Mop.flip_h = false
+		$Mop.position.x = 10
 		$Sprite2D.flip_h = false
 		current_direction = _direction.RIGHT
 	elif dir < 0:
+		$Mop.flip_h = true
+		$Mop.position.x = -10
 		$Sprite2D.flip_h = true
 		current_direction = _direction.LEFT
 
@@ -67,17 +93,26 @@ func shoot():
 	var bullet_direction = Vector2()
 	ammo -= 1
 	
+	if current_direction == _direction.RIGHT:
+		mop_animator.play("Flick")
+	
+	if current_direction == _direction.LEFT:
+		mop_animator.play("Flick_left")
+	
 	if ammo >= 0:
 		ammo_count.text = str(ammo)
 	
 	if Input.is_action_pressed("AimUp"):
 		bullet_direction = Vector2(0, -1)
+		mop_animator.play("Flick_up")
 	elif Input.is_action_pressed("Aimdown"):
+		mop_animator.play("Flick_down")
 		bullet_direction = Vector2(0, 1)
 	else:
 		bullet_direction = Vector2(current_direction, 0)
 
-	b.start(position, bullet_direction)
+	# Use the bullet_spawn_sprite's position
+	b.start(bullet_spawn_sprite.global_position, bullet_direction)
 
 func _on_hottub_body_entered(body):
 	if reload_timer.time_left < 1 and ammo < 3:
@@ -86,5 +121,22 @@ func _on_hottub_body_entered(body):
 		if reload_timer.time_left == 0:
 			reload_timer.set_wait_time(10)
 			reload_timer.start()
+
 func _on_reload_timer_timeout():
 	print("Timer timed out!")
+
+func _on_trash_body_entered(body):
+	is_in_trash_area = true
+
+func _on_trash_body_exited(body: Node2D) -> void:
+	is_in_trash_area = false
+	mop_animator.stop()
+
+func _on_trash_timer_timeout() -> void:
+	speed = 350
+	jump_speed = -1200
+	interact_timer.stop()
+	mop_animator.stop()
+	is_trash_interactive = false  
+	trash_node.visible = false
+	GlobalVariables.objects += 1

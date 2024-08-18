@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dgrq17kga8iuj"]
+
+[ext_resource type="Script" path="res://Scripts/trash.gd" id="1_bvbe8"]
+[ext_resource type="Texture2D" uid="uid://617tyeymm1o2" path="res://Assets/Pile of trash.png" id="2_igqnm"]
+[ext_resource type="FontFile" uid="uid://bmsuh2ynrvpfm" path="res://Assets/elv-pixels-11.ttf" id="3_j1gc4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6km6g"]
+size = Vector2(23, 19)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwf34"]
+font = ExtResource("3_j1gc4")
+font_size = 18
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Trash" type="Area2D"]
+position = Vector2(206, 564)
+scale = Vector2(2.32, 2.32)
+script = ExtResource("1_bvbe8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_6km6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_igqnm")
+
+[node name="TrashTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="Trash_Timer_Label" type="Label" parent="."]
+offset_left = -17.2414
+offset_top = -28.8793
+offset_right = 22.7586
+offset_bottom = -5.87931
+label_settings = SubResource("LabelSettings_bwf34")

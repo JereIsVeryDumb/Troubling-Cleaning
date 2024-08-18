@@ -1,13 +1,16 @@
-[gd_scene load_steps=46 format=3 uid="uid://b5vt7msbv4la4"]
+[gd_scene load_steps=49 format=3 uid="uid://b5vt7msbv4la4"]
 
 [ext_resource type="PackedScene" uid="uid://25vbvdnhq60m" path="res://Scenes/player.tscn" id="1_5njv3"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_aj0km"]
+[ext_resource type="Script" path="res://Scripts/trash.gd" id="2_7xt7g"]
 [ext_resource type="Texture2D" uid="uid://c573f777msu3g" path="res://Assets/Place holder floor.png" id="2_y0pyr"]
+[ext_resource type="Texture2D" uid="uid://617tyeymm1o2" path="res://Assets/Pile of trash.png" id="3_jafr1"]
 [ext_resource type="Script" path="res://Scripts/ikkuna.gd" id="3_p1uq6"]
 [ext_resource type="Texture2D" uid="uid://bcpysjdpsc65e" path="res://Assets/Tuhkanen Ikkuna.png" id="4_1u7l2"]
 [ext_resource type="Texture2D" uid="uid://dmml5isebh784" path="res://Assets/Tuhkanen Ikkuna (1).png" id="5_6mq7b"]
 [ext_resource type="Texture2D" uid="uid://cmfk6u412yjim" path="res://Assets/Tuhkanen Ikkuna-17.png.png" id="6_5laa8"]
 [ext_resource type="Texture2D" uid="uid://m1oxegh1br38" path="res://Assets/hOTTUB.png" id="7_5rhdl"]
+[ext_resource type="Script" path="res://Scripts/ikkuna_2.gd" id="9_pm7by"]
 [ext_resource type="FontFile" uid="uid://bmsuh2ynrvpfm" path="res://Assets/elv-pixels-11.ttf" id="9_xdkqg"]
 [ext_resource type="Script" path="res://Scripts/level_change.gd" id="10_jdhki"]
 [ext_resource type="Texture2D" uid="uid://bj11dmw6m858u" path="res://Assets/Playbutton.png" id="11_bq4fc"]
@@ -15,6 +18,15 @@
 [ext_resource type="Texture2D" uid="uid://b7hnw55yi0b4p" path="res://Assets/RestartLevel.png" id="12_kd8q1"]
 [ext_resource type="Texture2D" uid="uid://25n56j1kbhwq" path="res://Assets/Settings Button.png" id="13_d3qby"]
 [ext_resource type="Texture2D" uid="uid://bi7hol7fhs3se" path="res://Assets/Quit.png" id="14_64wqw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6km6g"]
+size = Vector2(23, 19)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwf34"]
+font = ExtResource("9_xdkqg")
+font_size = 18
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1eff"]
 size = Vector2(18, 18)
@@ -154,13 +166,6 @@ size = Vector2(12.3029, 9.2914)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8egdp"]
 size = Vector2(62, 101)
 
-[sub_resource type="Gradient" id="Gradient_fx7ad"]
-offsets = PackedFloat32Array(0, 0.402597, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.746753, 0.746753, 0.746753, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_a5qvi"]
-gradient = SubResource("Gradient_fx7ad")
-
 [sub_resource type="LabelSettings" id="LabelSettings_j0loy"]
 font = ExtResource("9_xdkqg")
 font_size = 18
@@ -200,6 +205,29 @@ outline_color = Color(0, 0, 0, 1)
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_aj0km")
 
+[node name="Trash" type="Area2D" parent="." groups=["TrashGroup"]]
+position = Vector2(206, 564)
+scale = Vector2(2.32, 2.32)
+script = ExtResource("2_7xt7g")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash"]
+position = Vector2(0.5, 1.5)
+shape = SubResource("RectangleShape2D_6km6g")
+
+[node name="Sprite2D" type="Sprite2D" parent="Trash"]
+texture = ExtResource("3_jafr1")
+
+[node name="TrashTimer" type="Timer" parent="Trash"]
+wait_time = 5.0
+one_shot = true
+
+[node name="Trash_Timer_Label" type="Label" parent="Trash"]
+offset_left = -17.2414
+offset_top = -28.8793
+offset_right = 22.7586
+offset_bottom = -5.87931
+label_settings = SubResource("LabelSettings_bwf34")
+
 [node name="Ikkuna" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(-115, 65)
@@ -213,6 +241,23 @@ position = Vector2(37, 21)
 shape = SubResource("RectangleShape2D_a1eff")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ikkuna"]
+texture_filter = 1
+position = Vector2(37.2998, 21.2815)
+sprite_frames = SubResource("SpriteFrames_wyk3i")
+
+[node name="Ikkuna2" type="Node2D" parent="."]
+texture_filter = 1
+position = Vector2(147, 321)
+scale = Vector2(4.37, 4.37)
+script = ExtResource("9_pm7by")
+
+[node name="Area2D" type="Area2D" parent="Ikkuna2"]
+position = Vector2(37, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ikkuna2/Area2D"]
+shape = SubResource("RectangleShape2D_a1eff")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Ikkuna2"]
 texture_filter = 1
 position = Vector2(37.2998, 21.2815)
 sprite_frames = SubResource("SpriteFrames_wyk3i")
@@ -532,12 +577,6 @@ script = ExtResource("10_jdhki")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flagpole"]
 position = Vector2(326, 54)
 shape = SubResource("RectangleShape2D_8egdp")
-
-[node name="Sprite2D" type="Sprite2D" parent="Flagpole"]
-position = Vector2(302, 57)
-rotation = 1.5708
-scale = Vector2(0.46, 114.885)
-texture = SubResource("GradientTexture1D_a5qvi")
 
 [node name="Ground2" type="Node2D" parent="."]
 position = Vector2(261, 473)
@@ -1481,7 +1520,11 @@ icon = ExtResource("13_d3qby")
 layout_mode = 2
 icon = ExtResource("14_64wqw")
 
+[connection signal="body_entered" from="Trash" to="Player" method="_on_trash_body_entered"]
+[connection signal="body_exited" from="Trash" to="Player" method="_on_trash_body_exited"]
+[connection signal="timeout" from="Trash/TrashTimer" to="Player" method="_on_trash_timer_timeout"]
 [connection signal="area_entered" from="Ikkuna/Area2D" to="Ikkuna" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Ikkuna2/Area2D" to="Ikkuna2" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Hottub" to="Player" method="_on_hottub_body_entered"]
 [connection signal="body_exited" from="Hottub" to="Player" method="_on_hottub_body_exited"]
 [connection signal="pressed" from="CanvasLayer/Pausemenu/Resume" to="CanvasLayer/Pausemenu" method="_on_resume_pressed"]
