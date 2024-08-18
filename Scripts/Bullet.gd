@@ -20,7 +20,13 @@ func start(pos: Vector2, dir: Vector2):
 func _physics_process(delta):
 	# Update the position based on direction and speed
 	position += direction * speed * delta
+	
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
-	
+
+
+
+
+func _on_body_entered(body):
+	queue_free()
