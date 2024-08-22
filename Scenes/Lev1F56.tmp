@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://b5vt7msbv4la4"]
+[gd_scene load_steps=50 format=3 uid="uid://b5vt7msbv4la4"]
 
 [ext_resource type="PackedScene" uid="uid://25vbvdnhq60m" path="res://Scenes/player.tscn" id="1_5njv3"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_aj0km"]
@@ -19,8 +19,6 @@
 [ext_resource type="Texture2D" uid="uid://b7hnw55yi0b4p" path="res://Assets/RestartLevel.png" id="12_kd8q1"]
 [ext_resource type="Texture2D" uid="uid://25n56j1kbhwq" path="res://Assets/Settings Button.png" id="13_d3qby"]
 [ext_resource type="Texture2D" uid="uid://bi7hol7fhs3se" path="res://Assets/Quit.png" id="14_64wqw"]
-[ext_resource type="Script" path="res://Scripts/trash_3.gd" id="16_8bo61"]
-[ext_resource type="Script" path="res://Scripts/trash_2.gd" id="20_to46h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6km6g"]
 size = Vector2(23, 19)
@@ -206,7 +204,6 @@ outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [node name="Level1" type="Node2D"]
-position = Vector2(1, 0)
 script = ExtResource("1_aj0km")
 
 [node name="Background" type="Sprite2D" parent="."]
@@ -214,24 +211,24 @@ position = Vector2(180, 375)
 scale = Vector2(7.34414, 7.57141)
 texture = ExtResource("2_5hnn6")
 
-[node name="Trash1" type="Area2D" parent="."]
+[node name="Trash" type="Area2D" parent="."]
 position = Vector2(206, 564)
 scale = Vector2(2.32, 2.32)
 collision_layer = 8
 script = ExtResource("2_7xt7g")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash"]
 position = Vector2(0.5, 1.5)
 shape = SubResource("RectangleShape2D_6km6g")
 
-[node name="Sprite2D" type="Sprite2D" parent="Trash1"]
+[node name="Sprite2D" type="Sprite2D" parent="Trash"]
 texture = ExtResource("3_jafr1")
 
-[node name="TrashTimer" type="Timer" parent="Trash1"]
+[node name="TrashTimer" type="Timer" parent="Trash"]
 wait_time = 5.0
 one_shot = true
 
-[node name="Trash_Timer_Label" type="Label" parent="Trash1"]
+[node name="Trash_Timer_Label" type="Label" parent="Trash"]
 offset_left = -31.8966
 offset_top = -17.2414
 offset_right = 137.103
@@ -593,9 +590,6 @@ offset_bottom = 23.0
 [node name="Flagpole" type="Area2D" parent="."]
 position = Vector2(3, 154)
 script = ExtResource("10_jdhki")
-
-[node name="Sprite2D" type="Sprite2D" parent="Flagpole"]
-position = Vector2(-3, -154)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Flagpole"]
 position = Vector2(326, 54)
@@ -1465,58 +1459,6 @@ texture_filter = 1
 position = Vector2(866, 0)
 texture = ExtResource("2_y0pyr")
 
-[node name="Trash2" type="Area2D" parent="."]
-position = Vector2(50, 342)
-scale = Vector2(2.32, 2.32)
-collision_layer = 8
-script = ExtResource("20_to46h")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash2"]
-position = Vector2(0.5, 1.5)
-shape = SubResource("RectangleShape2D_6km6g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Trash2"]
-texture = ExtResource("3_jafr1")
-
-[node name="TrashTimer" type="Timer" parent="Trash2"]
-wait_time = 5.0
-one_shot = true
-
-[node name="Trash_Timer_Label" type="Label" parent="Trash2"]
-offset_left = -31.8966
-offset_top = -17.2414
-offset_right = 137.103
-offset_bottom = 6.75862
-scale = Vector2(0.372773, 0.372773)
-text = "Press \"E\" to sweep"
-label_settings = SubResource("LabelSettings_bwf34")
-
-[node name="Trash3" type="Area2D" parent="."]
-position = Vector2(306, 447)
-scale = Vector2(2.32, 2.32)
-collision_layer = 8
-script = ExtResource("16_8bo61")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Trash3"]
-position = Vector2(0.5, 1.5)
-shape = SubResource("RectangleShape2D_6km6g")
-
-[node name="Sprite2D" type="Sprite2D" parent="Trash3"]
-texture = ExtResource("3_jafr1")
-
-[node name="TrashTimer" type="Timer" parent="Trash3"]
-wait_time = 5.0
-one_shot = true
-
-[node name="Trash_Timer_Label" type="Label" parent="Trash3"]
-offset_left = -31.8966
-offset_top = -17.2414
-offset_right = 137.103
-offset_bottom = 6.75862
-scale = Vector2(0.372773, 0.372773)
-text = "Press \"E\" to sweep"
-label_settings = SubResource("LabelSettings_bwf34")
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Thingscleaned" type="Label" parent="CanvasLayer"]
@@ -1600,19 +1542,13 @@ icon = ExtResource("13_d3qby")
 layout_mode = 2
 icon = ExtResource("14_64wqw")
 
-[connection signal="body_entered" from="Trash1" to="Player" method="_on_trash_body_entered"]
-[connection signal="body_exited" from="Trash1" to="Player" method="_on_trash_body_exited"]
-[connection signal="timeout" from="Trash1/TrashTimer" to="Player" method="_on_trash_timer_timeout"]
+[connection signal="body_entered" from="Trash" to="Player" method="_on_trash_body_entered"]
+[connection signal="body_exited" from="Trash" to="Player" method="_on_trash_body_exited"]
+[connection signal="timeout" from="Trash/TrashTimer" to="Player" method="_on_trash_timer_timeout"]
 [connection signal="area_entered" from="Ikkuna/Area2D" to="Ikkuna" method="_on_area_2d_area_entered"]
 [connection signal="area_entered" from="Ikkuna2/Area2D" to="Ikkuna2" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Hottub" to="Player" method="_on_hottub_body_entered"]
 [connection signal="body_exited" from="Hottub" to="Player" method="_on_hottub_body_exited"]
-[connection signal="body_entered" from="Trash2" to="Player" method="_on_trash2_body_entered"]
-[connection signal="body_exited" from="Trash2" to="Player" method="_on_trash2_body_exited"]
-[connection signal="timeout" from="Trash2/TrashTimer" to="Player" method="_on_trash_timer2_timeout"]
-[connection signal="body_entered" from="Trash3" to="Player" method="_on_trash3_body_entered"]
-[connection signal="body_exited" from="Trash3" to="Player" method="_on_trash3_body_exited"]
-[connection signal="timeout" from="Trash3/TrashTimer" to="Player" method="_on_trash_timer3_timeout"]
 [connection signal="pressed" from="CanvasLayer/Pausemenu/Resume" to="CanvasLayer/Pausemenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pausemenu/Restart" to="CanvasLayer/Pausemenu" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pausemenu/Settings" to="CanvasLayer/Pausemenu" method="_on_settings_pressed"]

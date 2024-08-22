@@ -5,18 +5,28 @@ extends CharacterBody2D
 @export var jump_speed = -1200
 @export var gravity = 4000
 @export_range(0.0, 1.0) var friction = 0.2
-@export_range(0.0, 1.0) var acceleration = 0.25
+@export_range(0.0, 1.0) var acceleration = 0.12
 @export var bullet_scene = preload("res://Scenes/bullet.tscn") as PackedScene
 @onready var ammo_count = $"../CanvasLayer/Ammo"
 @onready var reload_timer = $"../CanvasLayer/ReloadTimer"
 @onready var reload_label = $"../CanvasLayer/ReloadTimerLabel"
 @onready var mop_animator = $Mop/AnimationPlayer
-@onready var interact_timer = $"../Trash/TrashTimer"
-@onready var trash_timer_label = $"../Trash/Trash_Timer_Label"
-@onready var trash_node = $"../Trash"  # Reference to the trash node
+@onready var interact_timer = $"../Trash1/TrashTimer"
+@onready var trash_timer_label = $"../Trash1/Trash_Timer_Label"
+@onready var trash_node = $"../Trash1"  # Reference to the trash node
+@onready var interact_timer2 = $"../Trash2/TrashTimer"
+@onready var trash_timer_label2 = $"../Trash2/Trash_Timer_Label"
+@onready var trash_node2 = $"../Trash2"
+@onready var interact_timer3 = $"../Trash3/TrashTimer"
+@onready var trash_timer_label3 = $"../Trash3/Trash_Timer_Label"
+@onready var trash_node3 = $"../Trash3"
 
 var is_in_trash_area = false
+var is_in_trash_area2 = false
+var is_in_trash_area3 = false
 var is_trash_interactive = true  # Flag to control if the trash is interactive
+var is_trash_interactive2 = true
+var is_trash_interactive3 = true
 
 @onready var bullet_spawn_sprite = $Mop/Marker2D
 
@@ -30,6 +40,11 @@ func _ready():
 	reload_timer.connect("timeout", Callable(self, "_on_reload_timer_timeout"))
 	interact_timer.connect("timeout", Callable(self, "_on_trash_timer_timeout"))
 	trash_timer_label.visible = false
+	interact_timer2.connect("timeout", Callable(self, "_on_trash_timer2_timeout"))
+	trash_timer_label2.visible = false
+	interact_timer3.connect("timeout", Callable(self, "_on_trash_timer3_timeout"))
+	trash_timer_label3.visible = false
+	
 func start():
 	position = Vector2(28,28)
 
@@ -48,16 +63,50 @@ func _physics_process(delta):
 	
 	if interact_timer.is_stopped() == false:
 		trash_timer_label.text = '%02d' % int(ceil(interact_timer.time_left))
-	
+	if interact_timer2.is_stopped() == false:
+		trash_timer_label2.text = '%02d' % int(ceil(interact_timer2.time_left))
+	if interact_timer3.is_stopped() == false:
+		trash_timer_label3.text = '%02d' % int(ceil(interact_timer3.time_left))
 	if is_in_trash_area and is_trash_interactive and Input.is_action_pressed("Interact"):
 		speed = 0
 		jump_speed = 0
 		interact_timer.start(5.1)
 		trash_timer_label.position.x = 1
+		is_trash_interactive = false
+		print("jessus")
 		if current_direction == _direction.RIGHT:
 			mop_animator.play("Mopping")
 		elif current_direction == _direction.LEFT:
 			mop_animator.play("Mopping_left")
+			
+			
+			
+			
+			
+	
+	if is_in_trash_area2 and is_trash_interactive2 and Input.is_action_pressed("Interact"):
+		speed = 0
+		jump_speed = 0
+		interact_timer2.start(5.1)
+		trash_timer_label2.position.x = 1
+		is_trash_interactive2 = false
+		if current_direction == _direction.RIGHT:
+			mop_animator.play("Mopping")
+		elif current_direction == _direction.LEFT:
+			mop_animator.play("Mopping_left")
+	
+	if is_in_trash_area3 and is_trash_interactive3 and Input.is_action_pressed("Interact"):
+		speed = 0
+		jump_speed = 0
+		interact_timer3.start(5.1)
+		trash_timer_label3.position.x = 1
+		is_trash_interactive3 = false
+		if current_direction == _direction.RIGHT:
+			mop_animator.play("Mopping")
+		elif current_direction == _direction.LEFT:
+			mop_animator.play("Mopping_left")
+	
+	
 	
 	var s = reload_timer.time_left
 	reload_label.text = '%02d' % [s]
@@ -142,3 +191,42 @@ func _on_trash_timer_timeout() -> void:
 	is_trash_interactive = false  
 	trash_node.visible = false
 	GlobalVariables.objects += 1
+
+
+func _on_trash_timer2_timeout() -> void:
+	speed = 350
+	jump_speed = -1200
+	interact_timer2.stop()
+	mop_animator.stop()
+	is_trash_interactive2 = false  
+	trash_node2.visible = false
+	GlobalVariables.objects += 1
+
+
+func _on_trash2_body_entered(body: Node2D) -> void:
+	is_in_trash_area2 = true
+	trash_timer_label2.visible = true
+	print("jesus")
+
+func _on_trash2_body_exited(body: Node2D) -> void:
+	is_in_trash_area2 = false
+	mop_animator.stop()
+	trash_timer_label2.visible = false
+
+func _on_trash_timer3_timeout() -> void:
+	speed = 350
+	jump_speed = -1200
+	interact_timer3.stop()
+	mop_animator.stop()
+	is_trash_interactive3 = false  
+	trash_node3.visible = false
+	GlobalVariables.objects += 1
+func _on_trash3_body_entered(body: Node2D) -> void:
+	is_in_trash_area3 = true
+	trash_timer_label3.visible = true
+
+
+func _on_trash3_body_exited(body: Node2D) -> void:
+	is_in_trash_area3 = false
+	mop_animator.stop()
+	trash_timer_label3.visible = false
