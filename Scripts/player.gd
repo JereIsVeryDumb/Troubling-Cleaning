@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed = 350
 @export var jump_speed = -1200
 @export var gravity = 4000
-@export_range(0.0, 1.0) var friction = 0.2
+@export_range(0.0, 1.0) var friction = 0.265
 @export_range(0.0, 1.0) var acceleration = 0.12
 @export var bullet_scene = preload("res://Scenes/bullet.tscn") as PackedScene
 @onready var ammo_count = $"../CanvasLayer/Ammo"
@@ -27,7 +27,7 @@ var is_in_trash_area3 = false
 var is_trash_interactive = true  # Flag to control if the trash is interactive
 var is_trash_interactive2 = true
 var is_trash_interactive3 = true
-
+var can_shoot = true
 @onready var bullet_spawn_sprite = $Mop/Marker2D
 
 @onready var screensize = get_viewport_rect().size
@@ -73,6 +73,7 @@ func _physics_process(delta):
 		interact_timer.start(5.1)
 		trash_timer_label.position.x = 1
 		is_trash_interactive = false
+		can_shoot = false
 		print("jessus")
 		if current_direction == _direction.RIGHT:
 			mop_animator.play("Mopping")
@@ -90,6 +91,7 @@ func _physics_process(delta):
 		interact_timer2.start(5.1)
 		trash_timer_label2.position.x = 1
 		is_trash_interactive2 = false
+		can_shoot = false
 		if current_direction == _direction.RIGHT:
 			mop_animator.play("Mopping")
 		elif current_direction == _direction.LEFT:
@@ -101,6 +103,7 @@ func _physics_process(delta):
 		interact_timer3.start(5.1)
 		trash_timer_label3.position.x = 1
 		is_trash_interactive3 = false
+		can_shoot = false
 		if current_direction == _direction.RIGHT:
 			mop_animator.play("Mopping")
 		elif current_direction == _direction.LEFT:
@@ -132,7 +135,7 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
 		velocity.y = jump_speed
 
-	if Input.is_action_just_pressed("Shoot") and ammo > 0:
+	if Input.is_action_just_pressed("Shoot") and ammo > 0 and can_shoot == true:
 		shoot()
 	
 func shoot():
@@ -190,6 +193,7 @@ func _on_trash_timer_timeout() -> void:
 	mop_animator.stop()
 	is_trash_interactive = false  
 	trash_node.visible = false
+	can_shoot = true
 	GlobalVariables.objects += 1
 
 
@@ -200,6 +204,7 @@ func _on_trash_timer2_timeout() -> void:
 	mop_animator.stop()
 	is_trash_interactive2 = false  
 	trash_node2.visible = false
+	can_shoot = true
 	GlobalVariables.objects += 1
 
 
@@ -220,6 +225,7 @@ func _on_trash_timer3_timeout() -> void:
 	mop_animator.stop()
 	is_trash_interactive3 = false  
 	trash_node3.visible = false
+	can_shoot = true
 	GlobalVariables.objects += 1
 func _on_trash3_body_entered(body: Node2D) -> void:
 	is_in_trash_area3 = true
