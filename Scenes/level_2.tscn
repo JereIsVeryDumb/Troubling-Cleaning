@@ -224,7 +224,6 @@ script = ExtResource("3_65f25")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Trash1"]
 position = Vector2(-0.431053, 1.49998)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6km6g")
 
 [node name="Sprite2D" type="Sprite2D" parent="Trash1"]

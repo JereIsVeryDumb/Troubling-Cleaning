@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b5vt7msbv4la4"]
+[gd_scene load_steps=59 format=3 uid="uid://b5vt7msbv4la4"]
 
 [ext_resource type="PackedScene" uid="uid://25vbvdnhq60m" path="res://Scenes/player.tscn" id="1_5njv3"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_aj0km"]
@@ -22,7 +22,6 @@
 [ext_resource type="Texture2D" uid="uid://b03yjnr3utf1" path="res://Assets/Redflag.png" id="15_cbiy0"]
 [ext_resource type="Script" path="res://Scripts/trash_3.gd" id="16_8bo61"]
 [ext_resource type="Texture2D" uid="uid://cjf01cxll5bnw" path="res://Assets/1 Star header.png" id="18_aux44"]
-[ext_resource type="Script" path="res://Scripts/end.gd" id="18_xtwa8"]
 [ext_resource type="Texture2D" uid="uid://df0r6pf47r0i3" path="res://Assets/2 Star header.png" id="19_fcced"]
 [ext_resource type="Texture2D" uid="uid://bh0kd68rgqq4l" path="res://Assets/3 star header.png" id="20_bccy0"]
 [ext_resource type="Script" path="res://Scripts/trash_2.gd" id="20_to46h"]
@@ -1549,7 +1548,6 @@ text = " / 5"
 label_settings = SubResource("LabelSettings_xtq4w")
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
-wait_time = 6500.0
 one_shot = true
 
 [node name="Label" type="Label" parent="CanvasLayer"]
@@ -1582,7 +1580,6 @@ label_settings = SubResource("LabelSettings_ht7gk")
 visible = false
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("18_xtwa8")
 
 [node name="1 star header" type="Sprite2D" parent="CanvasLayer/End"]
 position = Vector2(175, 153)
@@ -1601,38 +1598,34 @@ position = Vector2(181, 207)
 scale = Vector2(4.85187, 4.85187)
 texture = ExtResource("20_bccy0")
 
-[node name="RestartStage" type="Button" parent="CanvasLayer/End"]
-offset_left = 39.0
-offset_top = 380.0
-offset_right = 102.0
-offset_bottom = 452.0
-scale = Vector2(1.445, 1.445)
-focus_neighbor_right = NodePath("../NextStage")
-theme_type_variation = &"FlatButton"
-theme_override_icons/icon = ExtResource("11_bq4fc")
-icon = ExtResource("12_kd8q1")
-flat = true
-
 [node name="NextStage" type="Button" parent="CanvasLayer/End"]
-offset_left = 142.0
-offset_top = 383.0
-offset_right = 214.0
-offset_bottom = 455.0
+offset_left = 8.0
+offset_top = 389.0
+offset_right = 80.0
+offset_bottom = 461.0
 scale = Vector2(1.445, 1.445)
-focus_neighbor_left = NodePath("../RestartStage")
-focus_neighbor_right = NodePath("../WorldSelect")
 theme_type_variation = &"FlatButton"
 theme_override_icons/icon = ExtResource("11_bq4fc")
 icon = ExtResource("22_lgf4w")
 flat = true
 
-[node name="WorldSelect" type="Button" parent="CanvasLayer/End"]
-offset_left = 257.0
-offset_top = 380.0
-offset_right = 320.0
-offset_bottom = 452.0
+[node name="RestartStage" type="Button" parent="CanvasLayer/End"]
+offset_left = 136.0
+offset_top = 388.0
+offset_right = 199.0
+offset_bottom = 460.0
 scale = Vector2(1.445, 1.445)
-focus_neighbor_left = NodePath("../NextStage")
+theme_type_variation = &"FlatButton"
+theme_override_icons/icon = ExtResource("11_bq4fc")
+icon = ExtResource("12_kd8q1")
+flat = true
+
+[node name="WorldSelect" type="Button" parent="CanvasLayer/End"]
+offset_left = 255.0
+offset_top = 386.0
+offset_right = 318.0
+offset_bottom = 458.0
+scale = Vector2(1.445, 1.445)
 theme_type_variation = &"FlatButton"
 theme_override_icons/icon = ExtResource("11_bq4fc")
 icon = ExtResource("24_f07u5")
@@ -1678,25 +1671,19 @@ label_settings = SubResource("LabelSettings_16sfs")
 
 [node name="Resume" type="Button" parent="CanvasLayer/Pausemenu"]
 layout_mode = 2
-focus_neighbor_bottom = NodePath("../Restart")
 icon = ExtResource("11_bq4fc")
 
 [node name="Restart" type="Button" parent="CanvasLayer/Pausemenu"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Resume")
-focus_neighbor_bottom = NodePath("../Settings")
 icon = ExtResource("12_kd8q1")
 icon_alignment = 1
 
 [node name="Settings" type="Button" parent="CanvasLayer/Pausemenu"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Restart")
-focus_neighbor_bottom = NodePath("../Quit")
 icon = ExtResource("13_d3qby")
 
 [node name="Quit" type="Button" parent="CanvasLayer/Pausemenu"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Settings")
 icon = ExtResource("14_64wqw")
 
 [connection signal="body_entered" from="Trash1" to="Player" method="_on_trash_body_entered"]
@@ -1713,8 +1700,8 @@ icon = ExtResource("14_64wqw")
 [connection signal="body_entered" from="Trash3" to="Player" method="_on_trash3_body_entered"]
 [connection signal="body_exited" from="Trash3" to="Player" method="_on_trash3_body_exited"]
 [connection signal="timeout" from="Trash3/TrashTimer" to="Player" method="_on_trash_timer3_timeout"]
-[connection signal="pressed" from="CanvasLayer/End/RestartStage" to="Flagpole" method="_on_restart_stage_pressed"]
 [connection signal="pressed" from="CanvasLayer/End/NextStage" to="Flagpole" method="_on_next_stage_pressed"]
+[connection signal="pressed" from="CanvasLayer/End/RestartStage" to="Flagpole" method="_on_restart_stage_pressed"]
 [connection signal="pressed" from="CanvasLayer/End/WorldSelect" to="Flagpole" method="_on_world_select_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pausemenu/Resume" to="CanvasLayer/Pausemenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pausemenu/Restart" to="CanvasLayer/Pausemenu" method="_on_restart_pressed"]

@@ -1549,7 +1549,6 @@ text = " / 5"
 label_settings = SubResource("LabelSettings_xtq4w")
 
 [node name="Timer" type="Timer" parent="CanvasLayer"]
-wait_time = 6500.0
 one_shot = true
 
 [node name="Label" type="Label" parent="CanvasLayer"]
