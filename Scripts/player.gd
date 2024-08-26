@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
 @export_group("Player Variables")
-@export var speed = 350
-@export var jump_speed = -1200
 @export var gravity = 4000
 @export_range(0.0, 1.0) var friction = 0.265
 @export_range(0.0, 1.0) var acceleration = 0.12
@@ -55,7 +53,7 @@ var current_direction: _direction = _direction.RIGHT
 func _physics_process(delta):
 	velocity.y += gravity * delta
 	var input = Input.get_vector("Left", "Right", "Lookdown", "Lookup")
-	position += input * speed * delta
+	position += input * GlobalVariables.speed * delta
 	position = position.clamp(Vector2.ZERO, screensize)
 	
 	var dir = Input.get_axis("Left", "Right")
@@ -68,8 +66,8 @@ func _physics_process(delta):
 	if interact_timer3.is_stopped() == false:
 		trash_timer_label3.text = '%02d' % int(ceil(interact_timer3.time_left))
 	if is_in_trash_area and is_trash_interactive and Input.is_action_pressed("Interact"):
-		speed = 0
-		jump_speed = 0
+		GlobalVariables.speed = 0
+		GlobalVariables.jump_speed = 0
 		interact_timer.start(5.1)
 		trash_timer_label.position.x = 1
 		is_trash_interactive = false
@@ -86,8 +84,8 @@ func _physics_process(delta):
 			
 	
 	if is_in_trash_area2 and is_trash_interactive2 and Input.is_action_pressed("Interact"):
-		speed = 0
-		jump_speed = 0
+		GlobalVariables.speed = 0
+		GlobalVariables.jump_speed = 0
 		interact_timer2.start(5.1)
 		trash_timer_label2.position.x = 1
 		is_trash_interactive2 = false
@@ -98,8 +96,8 @@ func _physics_process(delta):
 			mop_animator.play("Mopping_left")
 	
 	if is_in_trash_area3 and is_trash_interactive3 and Input.is_action_pressed("Interact"):
-		speed = 0
-		jump_speed = 0
+		GlobalVariables.speed = 0
+		GlobalVariables.jump_speed = 0
 		interact_timer3.start(5.1)
 		trash_timer_label3.position.x = 1
 		is_trash_interactive3 = false
@@ -115,7 +113,7 @@ func _physics_process(delta):
 	reload_label.text = '%02d' % [s]
 
 	if dir != 0:
-		velocity.x = lerp(velocity.x, dir * speed, acceleration)
+		velocity.x = lerp(velocity.x, dir * GlobalVariables.speed, acceleration)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, friction)
 
@@ -133,7 +131,7 @@ func _physics_process(delta):
 	move_and_slide()
 
 	if Input.is_action_just_pressed("Jump") and is_on_floor():
-		velocity.y = jump_speed
+		velocity.y = GlobalVariables.jump_speed
 
 	if Input.is_action_just_pressed("Shoot") and ammo > 0 and can_shoot == true:
 		shoot()
@@ -187,8 +185,8 @@ func _on_trash_body_exited(body: Node2D) -> void:
 	trash_timer_label.visible = false
 
 func _on_trash_timer_timeout() -> void:
-	speed = 350
-	jump_speed = -1200
+	GlobalVariables.speed = 350
+	GlobalVariables.jump_speed = -1200
 	interact_timer.stop()
 	mop_animator.stop()
 	is_trash_interactive = false  
@@ -198,8 +196,8 @@ func _on_trash_timer_timeout() -> void:
 
 
 func _on_trash_timer2_timeout() -> void:
-	speed = 350
-	jump_speed = -1200
+	GlobalVariables.speed = 350
+	GlobalVariables.jump_speed = -1200
 	interact_timer2.stop()
 	mop_animator.stop()
 	is_trash_interactive2 = false  
@@ -219,8 +217,8 @@ func _on_trash2_body_exited(body: Node2D) -> void:
 	trash_timer_label2.visible = false
 
 func _on_trash_timer3_timeout() -> void:
-	speed = 350
-	jump_speed = -1200
+	GlobalVariables.speed = 350
+	GlobalVariables.jump_speed = -1200
 	interact_timer3.stop()
 	mop_animator.stop()
 	is_trash_interactive3 = false  
