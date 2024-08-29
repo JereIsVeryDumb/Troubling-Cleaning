@@ -9,11 +9,12 @@ extends Area2D
 @onready var one_star = $"../CanvasLayer/End/1 star header"
 @onready var two_star = $"../CanvasLayer/End/2 star header"
 @onready var three_star = $"../CanvasLayer/End/3 star header"
-
+@onready var objectivecount = $"../CanvasLayer/ObjectiveCount"
 signal timer_stop
 var star_count = 0  # Default to 0 stars
 var high_score: float = 99999.999  # Default high score
 var last_seen_time: float = 0.0
+var required_objects = 5  # Default required objects count
 
 func get_save_path() -> String:
 	var level_number_str = GlobalVariables.get_level_number()
@@ -40,7 +41,19 @@ func _ready() -> void:
 		print("High Score:", high_score)
 		print("Star Count:", star_count)
 
-		update_star_visibility()
+	update_required_objects()
+	update_star_visibility()
+
+func update_required_objects() -> void:
+	# Get the current level number and convert it to an integer
+	var current_level = int(GlobalVariables.get_level_number())  
+
+	# Set required objects count based on the level number
+	if current_level >= 5:
+		required_objects = 6
+	else:
+		required_objects = 5
+
 func update_star_visibility():
 	# Set visibility of stars based on the highest star count achieved
 	if star_count >= 3:
@@ -51,10 +64,14 @@ func update_star_visibility():
 		one_star.visible = true
 
 func _process(delta: float) -> void:
-	pass
+	# Update objective count based on the current required objects
+	objectivecount.text = str(GlobalVariables.objects) + " / " + str(required_objects)
 
 func _on_body_entered(body: Node2D) -> void:
-	if GlobalVariables.objects == 5:
+	update_required_objects()  # Ensure required_objects is set correctly
+
+	# Check if the player has collected the required number of objects
+	if GlobalVariables.objects == required_objects:
 		end.visible = true
 		next_stagebutton.grab_focus()
 		GlobalVariables.speed = 0
@@ -67,12 +84,12 @@ func _on_body_entered(body: Node2D) -> void:
 			score_value = -last_seen_time + 32.71
 		else:
 			score_value = 0.0
-		
+
 		var formatted_score = String("%0.3f" % score_value)
 		score.text = "Score : " + formatted_score  # Update the score label
 
 		var epsilon = 0.00001
-		
+
 		print("Score Value:", score_value, " High Score:", high_score)
 
 		if score_value < high_score - epsilon:
@@ -83,7 +100,7 @@ func _on_body_entered(body: Node2D) -> void:
 		else:
 			high_score_label.text += str("%0.3f" % high_score)
 			save_game()
-		
+
 		update_star_visibility()
 
 		var current_run_stars = 0
@@ -96,7 +113,7 @@ func _on_body_entered(body: Node2D) -> void:
 		else:
 			one_star.visible = true
 			current_run_stars = 1
-		
+
 		if current_run_stars > star_count:
 			star_count = current_run_stars
 			save_game()
@@ -110,11 +127,9 @@ func trigger_timer_stop() -> void:
 	emit_signal("timer_stop")
 
 func _on_next_stage_pressed() -> void:
-	
-
-	
 	if GlobalVariables.is_level_scene():
 		GlobalVariables.speed = 350
+		GlobalVariables.jump_speed = -1200
 		var scene_path = GlobalVariables.get_current_scene_path()
 		if scene_path:
 			print("Scene Path:", scene_path)
@@ -137,6 +152,7 @@ func _on_next_stage_pressed() -> void:
 			print("No scene path available.")
 	else:
 		print("Current scene is not a level.")
+
 func _on_restart_stage_pressed() -> void:
 	get_tree().reload_current_scene()
 	GlobalVariables.speed = 350

@@ -280,7 +280,7 @@ sprite_frames = SubResource("SpriteFrames_wyk3i")
 
 [node name="Ikkuna2" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(-115, 369)
+position = Vector2(-572, 115)
 scale = Vector2(4.37, 4.37)
 script = ExtResource("10_j48sr")
 
@@ -1204,7 +1204,6 @@ texture = ExtResource("13_4tew6")
 [node name="Sprite2D50" type="Sprite2D" parent="Ground4/Floor/Sprite2D48"]
 texture_filter = 1
 position = Vector2(31.9998, 0)
-scale = Vector2(1, 1)
 texture = ExtResource("13_4tew6")
 
 [node name="Sprite2D49" type="Sprite2D" parent="Ground4/Floor"]
@@ -1494,7 +1493,6 @@ texture = ExtResource("13_4tew6")
 [node name="Sprite2D50" type="Sprite2D" parent="MovingGround/Floor/Sprite2D48"]
 texture_filter = 1
 position = Vector2(31.9998, 0)
-scale = Vector2(1, 1)
 texture = ExtResource("13_4tew6")
 
 [node name="Sprite2D49" type="Sprite2D" parent="MovingGround/Floor"]
