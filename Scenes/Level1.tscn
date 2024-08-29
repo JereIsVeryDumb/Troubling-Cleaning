@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b5vt7msbv4la4"]
+[gd_scene load_steps=61 format=3 uid="uid://b5vt7msbv4la4"]
 
 [ext_resource type="PackedScene" uid="uid://25vbvdnhq60m" path="res://Scenes/player.tscn" id="1_5njv3"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_aj0km"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/ikkuna_2.gd" id="9_pm7by"]
 [ext_resource type="FontFile" uid="uid://bmsuh2ynrvpfm" path="res://Assets/elv-pixels-11.ttf" id="9_xdkqg"]
 [ext_resource type="Texture2D" uid="uid://bj11dmw6m858u" path="res://Assets/Playbutton.png" id="11_bq4fc"]
+[ext_resource type="Texture2D" uid="uid://dh00p0e1vch6b" path="res://Assets/New Piskel-1.png.png" id="11_nycqk"]
 [ext_resource type="Script" path="res://Scripts/pausemenu.gd" id="11_ox16n"]
 [ext_resource type="Texture2D" uid="uid://b7hnw55yi0b4p" path="res://Assets/RestartLevel.png" id="12_kd8q1"]
 [ext_resource type="Texture2D" uid="uid://25n56j1kbhwq" path="res://Assets/Settings Button.png" id="13_d3qby"]
@@ -285,6 +286,12 @@ shape = SubResource("RectangleShape2D_a1eff")
 texture_filter = 1
 position = Vector2(37.2998, 21.2815)
 sprite_frames = SubResource("SpriteFrames_wyk3i")
+
+[node name="Taulu" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(182, 300)
+scale = Vector2(2.64, 2.64)
+texture = ExtResource("11_nycqk")
 
 [node name="Player" parent="." instance=ExtResource("1_5njv3")]
 position = Vector2(168, 390)
