@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dh7wmtga0u2my"]
+[gd_scene load_steps=65 format=3 uid="uid://dlvwjflxctyi"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_err3m"]
 [ext_resource type="Texture2D" uid="uid://cwm1whtni0ofi" path="res://Assets/Background.png" id="2_8qeuf"]
@@ -218,7 +218,7 @@ font_size = 19
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="Level8" type="Node2D"]
+[node name="Level9" type="Node2D"]
 position = Vector2(1, 0)
 script = ExtResource("1_err3m")
 
@@ -263,7 +263,7 @@ label_settings = SubResource("LabelSettings_bwf34")
 
 [node name="Ikkuna" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(487, -51)
+position = Vector2(161, 2.00001)
 scale = Vector2(4.37, 4.37)
 script = ExtResource("6_xsvof")
 
@@ -282,7 +282,7 @@ sprite_frames = SubResource("SpriteFrames_wyk3i")
 
 [node name="Ikkuna2" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(-315.885, 369)
+position = Vector2(-115, 369)
 scale = Vector2(4.37, 4.37)
 script = ExtResource("10_pugvq")
 
@@ -301,7 +301,7 @@ sprite_frames = SubResource("SpriteFrames_wyk3i")
 
 [node name="Ikkuna3" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(-301, 178)
+position = Vector2(-36, 214)
 scale = Vector2(4.37, 4.37)
 script = ExtResource("11_4hwds")
 
@@ -320,7 +320,7 @@ sprite_frames = SubResource("SpriteFrames_wyk3i")
 
 [node name="Ikkuna4" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(-333, 84)
+position = Vector2(168, 234)
 scale = Vector2(4.37, 4.37)
 script = ExtResource("12_5fxud")
 
@@ -632,7 +632,7 @@ position = Vector2(866, 0)
 texture = ExtResource("14_pcixe")
 
 [node name="Hottub" type="Area2D" parent="."]
-position = Vector2(142, 0)
+position = Vector2(-7.62939e-06, 3.8147e-06)
 
 [node name="Sprite2D" type="Sprite2D" parent="Hottub"]
 texture_filter = 1
@@ -651,7 +651,7 @@ offset_bottom = 23.0
 metadata/_edit_use_anchors_ = true
 
 [node name="Flagpole" type="Area2D" parent="."]
-position = Vector2(7, 463)
+position = Vector2(3, 154)
 script = ExtResource("16_mdihk")
 
 [node name="Sprite2D" type="Sprite2D" parent="Flagpole"]
@@ -664,7 +664,7 @@ position = Vector2(333, 87.25)
 shape = SubResource("RectangleShape2D_8egdp")
 
 [node name="Ground3" type="Node2D" parent="."]
-position = Vector2(-4.99997, 418)
+position = Vector2(1, 369)
 scale = Vector2(0.11, 0.785)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground3"]
@@ -952,7 +952,7 @@ position = Vector2(866, 0)
 texture = ExtResource("14_pcixe")
 
 [node name="Ground4" type="Node2D" parent="."]
-position = Vector2(1, 196)
+position = Vector2(270, 281)
 scale = Vector2(0.11, 0.785)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground4"]
@@ -1240,8 +1240,8 @@ position = Vector2(866, 0)
 texture = ExtResource("14_pcixe")
 
 [node name="Ground5" type="Node2D" parent="."]
-position = Vector2(-1, 78)
-scale = Vector2(0.350001, 0.785)
+position = Vector2(34, 221)
+scale = Vector2(0.11, 0.785)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground5"]
 collision_layer = 2
@@ -1528,7 +1528,7 @@ position = Vector2(866, 0)
 texture = ExtResource("14_pcixe")
 
 [node name="Ground6" type="Node2D" parent="."]
-position = Vector2(-371, 209)
+position = Vector2(275, 383)
 rotation = -1.5708
 scale = Vector2(0.11, 0.785)
 
@@ -1817,7 +1817,7 @@ position = Vector2(866, 0)
 texture = ExtResource("14_pcixe")
 
 [node name="Ground7" type="Node2D" parent="."]
-position = Vector2(-387, 474)
+position = Vector2(272, 137)
 scale = Vector2(0.11, 0.785)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground7"]
@@ -2105,7 +2105,7 @@ position = Vector2(866, 0)
 texture = ExtResource("14_pcixe")
 
 [node name="Icy_Ground" type="Node2D" parent="."]
-position = Vector2(266, 305)
+position = Vector2(150, 517)
 scale = Vector2(0.11, 0.785)
 script = ExtResource("18_naoyw")
 
@@ -2114,7 +2114,7 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Icy_Ground/StaticBody2D"]
-position = Vector2(436.364, -5.99623e-05)
+position = Vector2(436.364, -8.9172)
 scale = Vector2(1, 3.065)
 shape = SubResource("RectangleShape2D_egckw")
 
@@ -2153,7 +2153,7 @@ scale = Vector2(1, 2.375)
 shape = SubResource("RectangleShape2D_egckw")
 
 [node name="MovingGround" type="Area2D" parent="."]
-position = Vector2(-160, 736)
+position = Vector2(98, 449)
 scale = Vector2(0.11, 0.785)
 script = ExtResource("18_l2klx")
 
@@ -2442,7 +2442,7 @@ position = Vector2(866, 0)
 texture = ExtResource("14_pcixe")
 
 [node name="Trash2" type="Area2D" parent="."]
-position = Vector2(49, 165)
+position = Vector2(38, 337)
 scale = Vector2(2.32, 2.32)
 collision_layer = 8
 script = ExtResource("19_cags2")
@@ -2468,7 +2468,7 @@ text = "Press \"E\" to sweep"
 label_settings = SubResource("LabelSettings_bwf34")
 
 [node name="Trash3" type="Area2D" parent="."]
-position = Vector2(40, 391)
+position = Vector2(-413, 108)
 scale = Vector2(2.32, 2.32)
 collision_layer = 8
 script = ExtResource("20_8dto6")
@@ -2492,54 +2492,6 @@ offset_bottom = 6.75862
 scale = Vector2(0.372773, 0.372773)
 text = "Press \"E\" to sweep"
 label_settings = SubResource("LabelSettings_bwf34")
-
-[node name="Icy_Ground2" type="Node2D" parent="."]
-position = Vector2(170, 480)
-scale = Vector2(0.11, 0.785)
-script = ExtResource("18_naoyw")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Icy_Ground2"]
-collision_layer = 2
-collision_mask = 5
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Icy_Ground2/StaticBody2D"]
-position = Vector2(436.364, -5.99623e-05)
-scale = Vector2(1, 3.065)
-shape = SubResource("RectangleShape2D_egckw")
-
-[node name="Sprite2D" type="Sprite2D" parent="Icy_Ground2/StaticBody2D"]
-position = Vector2(100, 0)
-scale = Vector2(12.7336, 2.74)
-texture = ExtResource("19_thnn8")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Icy_Ground2/StaticBody2D"]
-position = Vector2(300, 0)
-scale = Vector2(12.7336, 2.74)
-texture = ExtResource("19_thnn8")
-
-[node name="Sprite2D3" type="Sprite2D" parent="Icy_Ground2/StaticBody2D"]
-position = Vector2(500, 0)
-scale = Vector2(12.7336, 2.74)
-texture = ExtResource("19_thnn8")
-
-[node name="Sprite2D4" type="Sprite2D" parent="Icy_Ground2/StaticBody2D"]
-position = Vector2(700, 0)
-scale = Vector2(12.7336, 2.74)
-texture = ExtResource("19_thnn8")
-
-[node name="Sprite2D5" type="Sprite2D" parent="Icy_Ground2/StaticBody2D"]
-position = Vector2(772.727, 0)
-scale = Vector2(12.7336, 2.74)
-texture = ExtResource("19_thnn8")
-
-[node name="Area2D" type="Area2D" parent="Icy_Ground2"]
-position = Vector2(0, -7.64331)
-scale = Vector2(1, 1.37)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Icy_Ground2/Area2D"]
-position = Vector2(436.364, 0)
-scale = Vector2(1, 2.375)
-shape = SubResource("RectangleShape2D_egckw")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -2741,8 +2693,6 @@ label_settings = SubResource("LabelSettings_ht7gk")
 [connection signal="body_entered" from="Trash3" to="Player" method="_on_trash3_body_entered"]
 [connection signal="body_exited" from="Trash3" to="Player" method="_on_trash3_body_exited"]
 [connection signal="timeout" from="Trash3/TrashTimer" to="Player" method="_on_trash_timer3_timeout"]
-[connection signal="body_entered" from="Icy_Ground2/Area2D" to="Icy_Ground2" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Icy_Ground2/Area2D" to="Icy_Ground2" method="_on_area_2d_body_exited"]
 [connection signal="pressed" from="CanvasLayer/Pausemenu/Resume" to="CanvasLayer/Pausemenu" method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pausemenu/Restart" to="CanvasLayer/Pausemenu" method="_on_restart_pressed"]
 [connection signal="pressed" from="CanvasLayer/Pausemenu/Settings" to="CanvasLayer/Pausemenu" method="_on_settings_pressed"]

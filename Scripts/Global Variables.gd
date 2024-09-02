@@ -6,7 +6,7 @@ var object_counters = {}
 var speed = 350
 var jump_speed = -1200
 var current_level: String = "res://Scenes/Level1.tscn"
-
+var friction = 0.265
 
 var highest_level_unlocked: int = 1
 

@@ -10,15 +10,18 @@ extends Area2D
 @onready var two_star = $"../CanvasLayer/End/2 star header"
 @onready var three_star = $"../CanvasLayer/End/3 star header"
 @onready var objectivecount = $"../CanvasLayer/ObjectiveCount"
+
 signal timer_stop
-var star_count = 0  # Default to 0 stars
-var high_score: float = 99999.999  # Default high score
+
+var star_counts = {}  # Dictionary to store star counts for each level
+var high_scores = {}  # Dictionary to store high scores for each level
 var last_seen_time: float = 0.0
 var required_objects = 5  # Default required objects count
 
 func get_save_path() -> String:
 	var level_number_str = GlobalVariables.get_level_number()
-	return "user://troubling_cleaning_level" + level_number_str + ".data"
+	return "user://troubling_cleaning_data.data"
+
 
 func save_game():
 	var save_file = FileAccess.open(get_save_path(), FileAccess.WRITE)
@@ -51,6 +54,8 @@ func update_required_objects() -> void:
 	# Set required objects count based on the level number
 	if current_level >= 5:
 		required_objects = 6
+	elif current_level == 8:
+		required_objects = 3
 	else:
 		required_objects = 5
 
