@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cbq81j18vjiiq"]
+[gd_scene load_steps=6 format=3 uid="uid://cbq81j18vjiiq"]
 
+[ext_resource type="Script" path="res://Scripts/world_select.gd" id="1_bj2km"]
 [ext_resource type="Texture2D" uid="uid://ouikcxxm1ee0" path="res://Assets/Rpkk.png" id="1_wk5ai"]
+[ext_resource type="Texture2D" uid="uid://bj11dmw6m858u" path="res://Assets/Playbutton.png" id="2_yqyhr"]
+[ext_resource type="FontFile" uid="uid://bmsuh2ynrvpfm" path="res://Assets/elv-pixels-11.ttf" id="4_sc163"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_eqo7u"]
+font = ExtResource("4_sc163")
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -9,8 +17,220 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_bj2km")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(180.75, 327.5)
 scale = Vector2(7.61, 6.52741)
 texture = ExtResource("1_wk5ai")
+
+[node name="Level1Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 77.555
+offset_right = 76.0
+offset_bottom = 149.555
+scale = Vector2(1.7989, 1.7989)
+icon = ExtResource("2_yqyhr")
+flat = true
+
+[node name="Label" type="Label" parent="Level1Button"]
+layout_mode = 0
+offset_left = 6.11485
+offset_top = -15.8736
+offset_right = 66.1148
+offset_bottom = 7.12641
+scale = Vector2(0.86, 0.86)
+text = "Level 1"
+label_settings = SubResource("LabelSettings_eqo7u")
+
+[node name="Level2Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 127.0
+offset_top = 77.555
+offset_right = 199.0
+offset_bottom = 149.555
+scale = Vector2(1.7989, 1.7989)
+icon = ExtResource("2_yqyhr")
+flat = true
+
+[node name="Label" type="Label" parent="Level2Button"]
+layout_mode = 0
+offset_left = 6.11485
+offset_top = -15.8736
+offset_right = 68.1148
+offset_bottom = 7.12641
+scale = Vector2(0.86, 0.86)
+text = "Level 2"
+label_settings = SubResource("LabelSettings_eqo7u")
+
+[node name="Level3Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 251.0
+offset_top = 77.555
+offset_right = 323.0
+offset_bottom = 149.555
+scale = Vector2(1.7989, 1.7989)
+icon = ExtResource("2_yqyhr")
+flat = true
+
+[node name="Label" type="Label" parent="Level3Button"]
+layout_mode = 0
+offset_left = 6.11485
+offset_top = -15.8736
+offset_right = 68.1148
+offset_bottom = 7.12641
+scale = Vector2(0.86, 0.86)
+text = "Level 3"
+label_settings = SubResource("LabelSettings_eqo7u")
+
+[node name="Level4Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -3.0
+offset_top = 228.0
+offset_right = 69.0
+offset_bottom = 300.0
+scale = Vector2(1.7989, 1.7989)
+icon = ExtResource("2_yqyhr")
+flat = true
+
+[node name="Label" type="Label" parent="Level4Button"]
+layout_mode = 0
+offset_left = 10.562
+offset_top = -15.5651
+offset_right = 70.562
+offset_bottom = 7.43493
+scale = Vector2(0.86, 0.86)
+text = "Level 4"
+label_settings = SubResource("LabelSettings_eqo7u")
+
+[node name="Level5Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 228.0
+offset_right = 204.0
+offset_bottom = 300.0
+scale = Vector2(1.7989, 1.7989)
+icon = ExtResource("2_yqyhr")
+flat = true
+
+[node name="Label" type="Label" parent="Level5Button"]
+layout_mode = 0
+offset_left = 6.11485
+offset_top = -15.8736
+offset_right = 66.1148
+offset_bottom = 7.12641
+scale = Vector2(0.86, 0.86)
+text = "Level 5"
+label_settings = SubResource("LabelSettings_eqo7u")
+
+[node name="Level6Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 244.0
+offset_top = 228.0
+offset_right = 316.0
+offset_bottom = 300.0
+scale = Vector2(1.7989, 1.7989)
+icon = ExtResource("2_yqyhr")
+flat = true
+
+[node name="Label" type="Label" parent="Level6Button"]
+layout_mode = 0
+offset_left = 6.11485
+offset_top = -15.8736
+offset_right = 66.1148
+offset_bottom = 7.12641
+scale = Vector2(0.86, 0.86)
+text = "Level 6"
+label_settings = SubResource("LabelSettings_eqo7u")
+
+[node name="Level7Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 0.015
+offset_top = 370.69
+offset_right = 72.015
+offset_bottom = 442.69
+scale = Vector2(1.7989, 1.7989)
+icon = ExtResource("2_yqyhr")
+flat = true
+
+[node name="Label" type="Label" parent="Level7Button"]
+layout_mode = 0
+offset_left = 9.99778
+offset_top = -14.8369
+offset_right = 69.9978
+offset_bottom = 8.16315
+scale = Vector2(0.86, 0.86)
+text = "Level 7"
+label_settings = SubResource("LabelSettings_eqo7u")
+
+[node name="Level8Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 370.69
+offset_right = 197.0
+offset_bottom = 442.69
+scale = Vector2(1.7989, 1.7989)
+icon = ExtResource("2_yqyhr")
+flat = true
+
+[node name="Label" type="Label" parent="Level8Button"]
+layout_mode = 0
+offset_left = 9.45022
+offset_top = -15.3927
+offset_right = 71.4502
+offset_bottom = 7.60725
+scale = Vector2(0.86, 0.86)
+text = "Level 8"
+label_settings = SubResource("LabelSettings_eqo7u")
+
+[node name="Level9Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 247.0
+offset_top = 370.69
+offset_right = 319.0
+offset_bottom = 442.69
+scale = Vector2(1.7989, 1.7989)
+icon = ExtResource("2_yqyhr")
+flat = true
+
+[node name="Label" type="Label" parent="Level9Button"]
+layout_mode = 0
+offset_left = 6.11485
+offset_top = -15.8736
+offset_right = 66.1148
+offset_bottom = 7.12641
+scale = Vector2(0.86, 0.86)
+text = "Level 9"
+label_settings = SubResource("LabelSettings_eqo7u")
+
+[node name="LevelButton10" type="Button" parent="."]
+layout_mode = 0
+offset_left = 125.0
+offset_top = 506.0
+offset_right = 197.0
+offset_bottom = 578.0
+scale = Vector2(1.7989, 1.7989)
+icon = ExtResource("2_yqyhr")
+flat = true
+
+[node name="Label" type="Label" parent="LevelButton10"]
+layout_mode = 0
+offset_left = 6.11485
+offset_top = -15.8736
+offset_right = 66.1148
+offset_bottom = 7.12641
+scale = Vector2(0.86, 0.86)
+text = "Level 10"
+label_settings = SubResource("LabelSettings_eqo7u")
+
+[connection signal="pressed" from="Level1Button" to="." method="_on_level_1_button_pressed"]
+[connection signal="pressed" from="Level2Button" to="." method="_on_level_2_button_pressed"]
+[connection signal="pressed" from="Level3Button" to="." method="_on_level_3_button_pressed"]
+[connection signal="pressed" from="Level4Button" to="." method="_on_level_4_button_pressed"]
+[connection signal="pressed" from="Level5Button" to="." method="_on_level_5_button_pressed"]
+[connection signal="pressed" from="Level6Button" to="." method="_on_level_6_button_pressed"]
+[connection signal="pressed" from="Level7Button" to="." method="_on_level_7_button_pressed"]
+[connection signal="pressed" from="Level8Button" to="." method="_on_level_8_button_pressed"]
+[connection signal="pressed" from="Level9Button" to="." method="_on_level_9_button_pressed"]
+[connection signal="pressed" from="LevelButton10" to="." method="_on_level_button_10_pressed"]

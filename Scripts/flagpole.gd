@@ -13,45 +13,58 @@ extends Area2D
 
 signal timer_stop
 
-var star_counts = {}  # Dictionary to store star counts for each level
-var high_scores = {}  # Dictionary to store high scores for each level
+var star_count = 0  # Default to 0 stars
+var high_score: float = 99999.999  # Default high score
 var last_seen_time: float = 0.0
 var required_objects = 5  # Default required objects count
 
-func get_save_path() -> String:
-	var level_number_str = GlobalVariables.get_level_number()
-	return "user://troubling_cleaning_data.data"
+func load_game(level_number: int):
+	var save_file = FileAccess.open(get_save_path(level_number), FileAccess.READ)
+	if save_file:
+		high_score = save_file.get_float()
+		star_count = save_file.get_32()
+		GlobalVariables.highest_level_unlocked = save_file.get_32()
 
+func get_save_path(level_number: int) -> String:
+	return "user://level_data_" + str(level_number) + ".save"
 
-func save_game():
-	var save_file = FileAccess.open(get_save_path(), FileAccess.WRITE)
+func save_game(level_number: int):
+	var save_file = FileAccess.open(get_save_path(level_number), FileAccess.WRITE)
 	save_file.store_float(high_score)
-	save_file.store_32(star_count)  # Store star_count as an integer
-	save_file.store_32(GlobalVariables.highest_level_unlocked)  # Store star_count as an integer
+	save_file.store_32(star_count)
+	save_file.store_32(GlobalVariables.highest_level_unlocked)
 
 func _ready() -> void:
+	var current_level_number = extract_level_number_from_scene_name()
 	if GlobalVariables.is_level_scene():
-		var save_file_path = get_save_path()
+		GlobalVariables.set_level_number(current_level_number)  # Now this function exists
+		var save_file_path = get_save_path(current_level_number)
 		var save_file = FileAccess.open(save_file_path, FileAccess.READ)
 		if save_file:
 			high_score = save_file.get_float()
 			star_count = save_file.get_32()
 			GlobalVariables.highest_level_unlocked = save_file.get_32()
-			# Ensure highest_level_unlocked is at least 1
 			GlobalVariables.highest_level_unlocked = max(GlobalVariables.highest_level_unlocked, 1)
 		else:
-			save_game()  # Create the file with default values
+			save_game(current_level_number)  # Create the file with default values
 		print("High Score:", high_score)
 		print("Star Count:", star_count)
 
 	update_required_objects()
 	update_star_visibility()
 
-func update_required_objects() -> void:
-	# Get the current level number and convert it to an integer
-	var current_level = int(GlobalVariables.get_level_number())  
+func extract_level_number_from_scene_name() -> int:
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		var scene_path = current_scene.get_scene_file_path()
+		var scene_basename = scene_path.get_file()
+		var level_number_str = scene_basename.replace("Level", "").replace(".tscn", "")
+		return int(level_number_str)
+	return 1  # Default to level 1 if something goes wrong
 
-	# Set required objects count based on the level number
+func update_required_objects() -> void:
+	var current_level = extract_level_number_from_scene_name()
+
 	if current_level >= 5:
 		required_objects = 6
 	elif current_level == 8:
@@ -60,7 +73,6 @@ func update_required_objects() -> void:
 		required_objects = 5
 
 func update_star_visibility():
-	# Set visibility of stars based on the highest star count achieved
 	if star_count >= 3:
 		three_star.visible = true
 	elif star_count >= 2:
@@ -69,8 +81,8 @@ func update_star_visibility():
 		one_star.visible = true
 
 func _process(delta: float) -> void:
-	# Update objective count based on the current required objects
 	objectivecount.text = str(GlobalVariables.objects) + " / " + str(required_objects)
+
 
 func _on_body_entered(body: Node2D) -> void:
 	update_required_objects()  # Ensure required_objects is set correctly
@@ -97,14 +109,16 @@ func _on_body_entered(body: Node2D) -> void:
 
 		print("Score Value:", score_value, " High Score:", high_score)
 
+		var current_level_number = extract_level_number_from_scene_name()  # Get current level number
+
 		if score_value < high_score - epsilon:
 			print("New High Score!")
 			high_score_label.text += str("%0.3f" % score_value)
 			high_score = score_value
-			save_game()
+			save_game(current_level_number)  # Pass the current level number
 		else:
 			high_score_label.text += str("%0.3f" % high_score)
-			save_game()
+			save_game(current_level_number)  # Pass the current level number
 
 		update_star_visibility()
 
@@ -121,7 +135,7 @@ func _on_body_entered(body: Node2D) -> void:
 
 		if current_run_stars > star_count:
 			star_count = current_run_stars
-			save_game()
+			save_game(current_level_number)  # Pass the current level number
 
 func trigger_timer_stop() -> void:
 	if timer:
@@ -145,8 +159,12 @@ func _on_next_stage_pressed() -> void:
 			print("Level Number:", level_number)
 			var next_level_number = level_number + 1
 			var next_level_name = "res://Scenes/Level" + str(next_level_number) + ".tscn"
+			
+			# Update highest_level_unlocked if the next level is higher
 			if next_level_number > GlobalVariables.highest_level_unlocked:
 				GlobalVariables.highest_level_unlocked = next_level_number
+				GlobalVariables.save_game_data()  # Save the updated value
+
 			print("Next Level Path:", next_level_name)
 			if FileAccess.file_exists(next_level_name):
 				get_tree().change_scene_to_file(next_level_name)
@@ -157,7 +175,6 @@ func _on_next_stage_pressed() -> void:
 			print("No scene path available.")
 	else:
 		print("Current scene is not a level.")
-
 func _on_restart_stage_pressed() -> void:
 	get_tree().reload_current_scene()
 	GlobalVariables.speed = 350
