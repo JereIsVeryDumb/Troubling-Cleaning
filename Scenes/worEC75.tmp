@@ -1,10 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cbq81j18vjiiq"]
+[gd_scene load_steps=7 format=3 uid="uid://cbq81j18vjiiq"]
 
 [ext_resource type="Script" path="res://Scripts/world_select.gd" id="1_bj2km"]
 [ext_resource type="Texture2D" uid="uid://ouikcxxm1ee0" path="res://Assets/Rpkk.png" id="1_wk5ai"]
 [ext_resource type="Texture2D" uid="uid://bigjj7mjsc774" path="res://Assets/LevelButton.png" id="3_6jwk8"]
 [ext_resource type="FontFile" uid="uid://bmsuh2ynrvpfm" path="res://Assets/elv-pixels-11.ttf" id="4_sc163"]
-[ext_resource type="Texture2D" uid="uid://bi7hol7fhs3se" path="res://Assets/Quit.png" id="5_e0up4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_eqo7u"]
 font = ExtResource("4_sc163")
@@ -15,8 +14,6 @@ outline_color = Color(0, 0, 0, 1)
 font = ExtResource("4_sc163")
 outline_size = 5
 outline_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Theme" id="Theme_a70r4"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -39,8 +36,6 @@ offset_top = 77.555
 offset_right = 76.0
 offset_bottom = 149.555
 scale = Vector2(1.7989, 1.7989)
-focus_neighbor_right = NodePath("../Level2Button")
-focus_neighbor_bottom = NodePath("../Level4Button")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -71,9 +66,6 @@ offset_top = 77.555
 offset_right = 199.0
 offset_bottom = 149.555
 scale = Vector2(1.7989, 1.7989)
-focus_neighbor_left = NodePath("../Level1Button")
-focus_neighbor_right = NodePath("../Level3Button")
-focus_neighbor_bottom = NodePath("../Level5Button")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -103,8 +95,6 @@ offset_top = 77.555
 offset_right = 323.0
 offset_bottom = 149.555
 scale = Vector2(1.7989, 1.7989)
-focus_neighbor_left = NodePath("../Level2Button")
-focus_neighbor_bottom = NodePath("../Level6Button")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -134,9 +124,6 @@ offset_top = 228.0
 offset_right = 69.0
 offset_bottom = 300.0
 scale = Vector2(1.7989, 1.7989)
-focus_neighbor_top = NodePath("../Level1Button")
-focus_neighbor_right = NodePath("../Level5Button")
-focus_neighbor_bottom = NodePath("../Level7Button")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -166,9 +153,6 @@ offset_top = 228.0
 offset_right = 204.0
 offset_bottom = 300.0
 scale = Vector2(1.7989, 1.7989)
-focus_neighbor_left = NodePath("../Level4Button")
-focus_neighbor_top = NodePath("../Level2Button")
-focus_neighbor_right = NodePath("../Level6Button")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -198,9 +182,6 @@ offset_top = 228.0
 offset_right = 316.0
 offset_bottom = 300.0
 scale = Vector2(1.7989, 1.7989)
-focus_neighbor_left = NodePath("../Level5Button")
-focus_neighbor_top = NodePath("../Level3Button")
-focus_neighbor_bottom = NodePath("../Level9Button")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -230,9 +211,6 @@ offset_top = 370.69
 offset_right = 72.015
 offset_bottom = 442.69
 scale = Vector2(1.7989, 1.7989)
-focus_neighbor_top = NodePath("../Level4Button")
-focus_neighbor_right = NodePath("../Level8Button")
-focus_neighbor_bottom = NodePath("../LevelButton10")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -262,10 +240,6 @@ offset_top = 370.69
 offset_right = 197.0
 offset_bottom = 442.69
 scale = Vector2(1.7989, 1.7989)
-focus_neighbor_left = NodePath("../Level7Button")
-focus_neighbor_top = NodePath("../Level5Button")
-focus_neighbor_right = NodePath("../Level9Button")
-focus_neighbor_bottom = NodePath("../LevelButton10")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -295,9 +269,6 @@ offset_top = 370.69
 offset_right = 319.0
 offset_bottom = 442.69
 scale = Vector2(1.7989, 1.7989)
-focus_neighbor_left = NodePath("../Level8Button")
-focus_neighbor_top = NodePath("../Level6Button")
-focus_neighbor_bottom = NodePath("../LevelButton10")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -327,8 +298,6 @@ offset_top = 506.0
 offset_right = 197.0
 offset_bottom = 578.0
 scale = Vector2(1.7989, 1.7989)
-focus_neighbor_left = NodePath("../Level7Button")
-focus_neighbor_right = NodePath("../Level9Button")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -350,16 +319,6 @@ offset_bottom = 38.2565
 scale = Vector2(1.77825, 1.77825)
 text = "10"
 label_settings = SubResource("LabelSettings_nxxnc")
-
-[node name="Quit" type="Button" parent="."]
-offset_left = 241.0
-offset_top = 506.0
-offset_right = 313.0
-offset_bottom = 578.0
-scale = Vector2(1.76, 1.76)
-theme = SubResource("Theme_a70r4")
-icon = ExtResource("5_e0up4")
-flat = true
 
 [connection signal="pressed" from="Level1Button" to="." method="_on_level_1_button_pressed"]
 [connection signal="pressed" from="Level2Button" to="." method="_on_level_2_button_pressed"]

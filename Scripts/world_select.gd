@@ -4,22 +4,22 @@ extends Control
 func _ready() -> void:
 	update_level_buttons()
 
-
 func update_level_buttons() -> void:
-	
 	var highest_level_unlocked = GlobalVariables.highest_level_unlocked
-
 	
 	for i in range(1, 11):
-		#
 		var button_name = "Level" + str(i) + "Button"
 		var button = get_node(button_name)
+		
 		if button:
 			button.disabled = i > highest_level_unlocked
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+	# Set focus to the highest level unlocked button
+	if highest_level_unlocked > 0:
+		var highest_button_name = "Level" + str(highest_level_unlocked) + "Button"
+		var highest_button = get_node(highest_button_name)
+		if highest_button:
+			highest_button.grab_focus()
 
 func _on_level_1_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Level1.tscn")
