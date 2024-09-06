@@ -23,8 +23,6 @@ func _process(delta: float) -> void:
 		var s = int(total_time_seconds) % 60
 		var ms = int((total_time_seconds - int(total_time_seconds)) * 1000)
 		label.text = '%02d:%02d:%03d' % [m, s, ms]
-	objectivecount.text = str(GlobalVariables.objects) + "/5"
-
 func _on_timer_stop() -> void:
 	print("Timer stop signal received")
 	if not timer.is_stopped():

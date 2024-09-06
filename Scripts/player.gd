@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 @export_group("Player Variables")
 @export var gravity = 4000
-@export_range(0.0, 1.0) var friction = 0.265
 @export_range(0.0, 1.0) var acceleration = 0.12
 @export var bullet_scene = preload("res://Scenes/bullet.tscn") as PackedScene
 @onready var ammo_count = $"../CanvasLayer/Ammo"
@@ -115,7 +114,7 @@ func _physics_process(delta):
 	if dir != 0:
 		velocity.x = lerp(velocity.x, dir * GlobalVariables.speed, acceleration)
 	else:
-		velocity.x = lerp(velocity.x, 0.0, friction)
+		velocity.x = lerp(velocity.x, 0.0, GlobalVariables.friction)
 
 	if dir > 0:
 		$Mop.flip_h = false

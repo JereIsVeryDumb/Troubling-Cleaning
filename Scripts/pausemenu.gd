@@ -27,6 +27,8 @@ func _on_restart_pressed() -> void:
 	update_pause_state()
 	get_tree().reload_current_scene()
 	print("Restarting scene")
+	GlobalVariables.speed = 350
+	GlobalVariables.jump_speed = -1200
 
 func _on_settings_pressed() -> void:
 	pass  # Implement settings functionality here
