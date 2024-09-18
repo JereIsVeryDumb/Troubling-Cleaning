@@ -66,8 +66,9 @@ func _on_level_6_button_pressed() -> void: _on_level_button_pressed(6)
 func _on_level_7_button_pressed() -> void: _on_level_button_pressed(7)
 func _on_level_8_button_pressed() -> void: _on_level_button_pressed(8)
 func _on_level_9_button_pressed() -> void: _on_level_button_pressed(9)
-func _on_level_10_button_pressed() -> void: _on_level_button_pressed(10)
-
 
 func _on_quit_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
+
+
+func _on_level_button_10_pressed() -> void: _on_level_button_pressed(10)

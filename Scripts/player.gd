@@ -17,6 +17,13 @@ extends CharacterBody2D
 @onready var interact_timer3 = $"../Trash3/TrashTimer"
 @onready var trash_timer_label3 = $"../Trash3/Trash_Timer_Label"
 @onready var trash_node3 = $"../Trash3"
+@onready var trash_particles = "pass"
+
+
+
+
+
+
 
 var is_in_trash_area = false
 var is_in_trash_area2 = false
@@ -67,6 +74,7 @@ func _physics_process(delta):
 	if is_in_trash_area and is_trash_interactive and Input.is_action_pressed("Interact"):
 		GlobalVariables.speed = 0
 		GlobalVariables.jump_speed = 0
+		velocity.x = 0
 		interact_timer.start(5.1)
 		trash_timer_label.position.x = 1
 		is_trash_interactive = false
@@ -85,6 +93,7 @@ func _physics_process(delta):
 	if is_in_trash_area2 and is_trash_interactive2 and Input.is_action_pressed("Interact"):
 		GlobalVariables.speed = 0
 		GlobalVariables.jump_speed = 0
+		velocity.x = 0
 		interact_timer2.start(5.1)
 		trash_timer_label2.position.x = 1
 		is_trash_interactive2 = false
@@ -97,6 +106,7 @@ func _physics_process(delta):
 	if is_in_trash_area3 and is_trash_interactive3 and Input.is_action_pressed("Interact"):
 		GlobalVariables.speed = 0
 		GlobalVariables.jump_speed = 0
+		velocity.x = 0
 		interact_timer3.start(5.1)
 		trash_timer_label3.position.x = 1
 		is_trash_interactive3 = false
@@ -113,17 +123,19 @@ func _physics_process(delta):
 
 	if dir != 0:
 		velocity.x = lerp(velocity.x, dir * GlobalVariables.speed, acceleration)
+		$AnimationPlayer.play("Walking")
 	else:
 		velocity.x = lerp(velocity.x, 0.0, GlobalVariables.friction)
+		$AnimationPlayer.stop()
 
 	if dir > 0:
 		$Mop.flip_h = false
-		$Mop.position.x = 10
+		$Mop.position.x = 26
 		$Sprite2D.flip_h = false
 		current_direction = _direction.RIGHT
 	elif dir < 0:
 		$Mop.flip_h = true
-		$Mop.position.x = -10
+		$Mop.position.x = -25
 		$Sprite2D.flip_h = true
 		current_direction = _direction.LEFT
 

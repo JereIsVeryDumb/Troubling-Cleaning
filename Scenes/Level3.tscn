@@ -309,7 +309,7 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
-position = Vector2(315.5, 1)
+position = Vector2(315.473, 0.573069)
 shape = SubResource("RectangleShape2D_egckw")
 
 [node name="Floor" type="Node2D" parent="Ground"]
@@ -1510,7 +1510,7 @@ text = "Press \"E\" to sweep"
 label_settings = SubResource("LabelSettings_bwf34")
 
 [node name="Trash3" type="Area2D" parent="."]
-position = Vector2(236, 455)
+position = Vector2(236, 457)
 scale = Vector2(2.32, 2.32)
 collision_layer = 8
 script = ExtResource("17_c6a4u")

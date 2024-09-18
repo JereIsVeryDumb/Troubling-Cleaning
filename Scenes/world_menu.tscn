@@ -108,6 +108,7 @@ text = "2"
 label_settings = SubResource("LabelSettings_nxxnc")
 
 [node name="Level2StarCount" type="Label" parent="Level2Button"]
+layout_mode = 0
 offset_left = 17.7886
 offset_top = 58.6164
 offset_right = 57.7887
@@ -149,6 +150,7 @@ text = "3"
 label_settings = SubResource("LabelSettings_nxxnc")
 
 [node name="Level3StarCount" type="Label" parent="Level3Button"]
+layout_mode = 0
 offset_left = 17.7886
 offset_top = 58.6164
 offset_right = 57.7887
@@ -190,6 +192,7 @@ text = "4"
 label_settings = SubResource("LabelSettings_nxxnc")
 
 [node name="Level4StarCount" type="Label" parent="Level4Button"]
+layout_mode = 0
 offset_left = 17.7886
 offset_top = 58.6164
 offset_right = 57.7887
@@ -231,6 +234,7 @@ text = "5"
 label_settings = SubResource("LabelSettings_nxxnc")
 
 [node name="Level5StarCount" type="Label" parent="Level5Button"]
+layout_mode = 0
 offset_left = 17.7886
 offset_top = 58.6164
 offset_right = 57.7887
@@ -273,6 +277,7 @@ text = "6"
 label_settings = SubResource("LabelSettings_nxxnc")
 
 [node name="Level6StarCount" type="Label" parent="Level6Button"]
+layout_mode = 0
 offset_left = 17.7886
 offset_top = 58.6164
 offset_right = 57.7887
@@ -289,7 +294,7 @@ offset_bottom = 442.69
 scale = Vector2(1.7989, 1.7989)
 focus_neighbor_top = NodePath("../Level4Button")
 focus_neighbor_right = NodePath("../Level8Button")
-focus_neighbor_bottom = NodePath("../LevelButton10")
+focus_neighbor_bottom = NodePath("../Level10Button")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -314,6 +319,7 @@ text = "7"
 label_settings = SubResource("LabelSettings_nxxnc")
 
 [node name="Level7StarCount" type="Label" parent="Level7Button"]
+layout_mode = 0
 offset_left = 17.7886
 offset_top = 58.6164
 offset_right = 57.7887
@@ -331,7 +337,7 @@ scale = Vector2(1.7989, 1.7989)
 focus_neighbor_left = NodePath("../Level7Button")
 focus_neighbor_top = NodePath("../Level5Button")
 focus_neighbor_right = NodePath("../Level9Button")
-focus_neighbor_bottom = NodePath("../LevelButton10")
+focus_neighbor_bottom = NodePath("../Level10Button")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -356,6 +362,7 @@ text = "8"
 label_settings = SubResource("LabelSettings_nxxnc")
 
 [node name="Level8StarCount" type="Label" parent="Level8Button"]
+layout_mode = 0
 offset_left = 17.7886
 offset_top = 58.6164
 offset_right = 57.7887
@@ -372,8 +379,8 @@ offset_bottom = 442.69
 scale = Vector2(1.7989, 1.7989)
 focus_neighbor_left = NodePath("../Level8Button")
 focus_neighbor_top = NodePath("../Level6Button")
-focus_neighbor_right = NodePath("../LevelButton10")
-focus_neighbor_bottom = NodePath("../LevelButton10")
+focus_neighbor_right = NodePath("../Level10Button")
+focus_neighbor_bottom = NodePath("../Level10Button")
 icon = ExtResource("3_6jwk8")
 flat = true
 
@@ -398,6 +405,7 @@ text = "9"
 label_settings = SubResource("LabelSettings_nxxnc")
 
 [node name="Level9StarCount" type="Label" parent="Level9Button"]
+layout_mode = 0
 offset_left = 17.7886
 offset_top = 58.6164
 offset_right = 57.7887
@@ -405,7 +413,7 @@ offset_bottom = 81.6164
 scale = Vector2(0.645161, 0.645161)
 label_settings = ExtResource("4_dicvq")
 
-[node name="LevelButton10" type="Button" parent="."]
+[node name="Level10Button" type="Button" parent="."]
 layout_mode = 0
 offset_left = 125.0
 offset_top = 506.0
@@ -418,7 +426,7 @@ focus_neighbor_right = NodePath("../Quit")
 icon = ExtResource("3_6jwk8")
 flat = true
 
-[node name="Label" type="Label" parent="LevelButton10"]
+[node name="Label" type="Label" parent="Level10Button"]
 layout_mode = 0
 offset_left = 6.11485
 offset_top = -8.33843
@@ -428,7 +436,7 @@ scale = Vector2(0.86, 0.86)
 text = "Level 10"
 label_settings = SubResource("LabelSettings_eqo7u")
 
-[node name="Label2" type="Label" parent="LevelButton10"]
+[node name="Label2" type="Label" parent="Level10Button"]
 layout_mode = 0
 offset_left = 18.9004
 offset_top = 15.2565
@@ -438,7 +446,8 @@ scale = Vector2(1.77825, 1.77825)
 text = "10"
 label_settings = SubResource("LabelSettings_nxxnc")
 
-[node name="Level10Starcount" type="Label" parent="LevelButton10"]
+[node name="Level10Starcount" type="Label" parent="Level10Button"]
+layout_mode = 0
 offset_left = 17.7886
 offset_top = 58.6164
 offset_right = 57.7887
@@ -466,5 +475,5 @@ flat = true
 [connection signal="pressed" from="Level7Button" to="." method="_on_level_7_button_pressed"]
 [connection signal="pressed" from="Level8Button" to="." method="_on_level_8_button_pressed"]
 [connection signal="pressed" from="Level9Button" to="." method="_on_level_9_button_pressed"]
-[connection signal="pressed" from="LevelButton10" to="." method="_on_level_button_10_pressed"]
+[connection signal="pressed" from="Level10Button" to="." method="_on_level_button_10_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

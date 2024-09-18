@@ -1,11 +1,55 @@
-[gd_scene load_steps=13 format=3 uid="uid://25vbvdnhq60m"]
+[gd_scene load_steps=19 format=3 uid="uid://25vbvdnhq60m"]
 
-[ext_resource type="Texture2D" uid="uid://dfb31t80l50y0" path="res://Assets/New Piskel.png" id="1_5eivu"]
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_eafjl"]
+[ext_resource type="Texture2D" uid="uid://bypyfdsjqq77q" path="res://Assets/pllayer.png" id="2_l5cp8"]
+[ext_resource type="Texture2D" uid="uid://cf4yqibgw735t" path="res://Assets/playerframe2.png" id="3_ktokm"]
 [ext_resource type="Texture2D" uid="uid://hvuts6hq0dis" path="res://Assets/Brush Mop.png" id="3_pvjcw"]
+[ext_resource type="Texture2D" uid="uid://ddb0ctxgmyfeu" path="res://Assets/playerframe1.png" id="4_ywq66"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onbm2"]
 size = Vector2(66, 70)
+
+[sub_resource type="Animation" id="Animation_fmcr2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_l5cp8")]
+}
+
+[sub_resource type="Animation" id="Animation_2fe5m"]
+resource_name = "Walking"
+length = 0.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("2_l5cp8"), ExtResource("3_ktokm"), ExtResource("4_ywq66")]
+}
+
+[sub_resource type="Animation" id="Animation_1fgmb"]
+resource_name = "new_animation"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ntqaw"]
+_data = {
+"RESET": SubResource("Animation_fmcr2"),
+"Walking": SubResource("Animation_2fe5m"),
+"new_animation": SubResource("Animation_1fgmb")
+}
 
 [sub_resource type="Animation" id="Animation_bf3n1"]
 resource_name = "Flick"
@@ -142,9 +186,9 @@ script = ExtResource("1_eafjl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(2.00002, 4.00002)
+position = Vector2(0, -7)
 scale = Vector2(4.9375, 4.9375)
-texture = ExtResource("1_5eivu")
+texture = ExtResource("2_l5cp8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -2)
@@ -154,8 +198,13 @@ shape = SubResource("RectangleShape2D_onbm2")
 wait_time = 0.5
 one_shot = true
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ntqaw")
+}
+
 [node name="Mop" type="Sprite2D" parent="."]
-position = Vector2(15, -3)
+position = Vector2(23, -3)
 scale = Vector2(2.96, 2.96)
 texture = ExtResource("3_pvjcw")
 flip_v = true

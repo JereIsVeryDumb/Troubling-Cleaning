@@ -1815,7 +1815,7 @@ position = Vector2(866, 0)
 texture = ExtResource("14_s442m")
 
 [node name="Trash2" type="Area2D" parent="."]
-position = Vector2(38, 337)
+position = Vector2(38, 342)
 scale = Vector2(2.32, 2.32)
 collision_layer = 8
 script = ExtResource("19_hr4ry")

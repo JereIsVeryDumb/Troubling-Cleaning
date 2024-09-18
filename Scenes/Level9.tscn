@@ -1,7 +1,7 @@
 [gd_scene load_steps=65 format=3 uid="uid://dlvwjflxctyi"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_err3m"]
-[ext_resource type="Texture2D" uid="uid://cwm1whtni0ofi" path="res://Assets/Background.png" id="2_8qeuf"]
+[ext_resource type="Texture2D" uid="uid://bbnumudng572b" path="res://Assets/laiva.png" id="2_v714e"]
 [ext_resource type="Script" path="res://Scripts/trash.gd" id="3_3rlp0"]
 [ext_resource type="Texture2D" uid="uid://617tyeymm1o2" path="res://Assets/Pile of trash.png" id="4_px363"]
 [ext_resource type="FontFile" uid="uid://bmsuh2ynrvpfm" path="res://Assets/elv-pixels-11.ttf" id="5_lii8l"]
@@ -223,17 +223,18 @@ position = Vector2(1, 0)
 script = ExtResource("1_err3m")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(180, 375)
+texture_filter = 1
+position = Vector2(184, 300)
 scale = Vector2(7.24, 7.464)
-texture = ExtResource("2_8qeuf")
+texture = ExtResource("2_v714e")
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 offset_left = -24.5093
 offset_top = -49.5284
 offset_right = 15.4907
 offset_bottom = -9.52842
-scale = Vector2(1.26143, 2.00906)
-color = Color(0.0431373, 0, 0.443137, 0.4)
+scale = Vector2(1.61176, 2.56703)
+color = Color(0, 0, 0, 0.529412)
 
 [node name="Trash1" type="Area2D" parent="."]
 position = Vector2(256, 564)
@@ -352,7 +353,7 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
-position = Vector2(315.5, 1)
+position = Vector2(315.759, -0.573063)
 shape = SubResource("RectangleShape2D_egckw")
 
 [node name="Floor" type="Node2D" parent="Ground"]
@@ -2442,7 +2443,7 @@ position = Vector2(866, 0)
 texture = ExtResource("14_pcixe")
 
 [node name="Trash2" type="Area2D" parent="."]
-position = Vector2(38, 337)
+position = Vector2(38, 343)
 scale = Vector2(2.32, 2.32)
 collision_layer = 8
 script = ExtResource("19_cags2")

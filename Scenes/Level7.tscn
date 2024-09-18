@@ -350,7 +350,7 @@ collision_layer = 2
 collision_mask = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
-position = Vector2(315.5, 1)
+position = Vector2(315.759, 0.286536)
 shape = SubResource("RectangleShape2D_egckw")
 
 [node name="Floor" type="Node2D" parent="Ground"]
@@ -1815,7 +1815,7 @@ position = Vector2(866, 0)
 texture = ExtResource("14_84a5j")
 
 [node name="Trash2" type="Area2D" parent="."]
-position = Vector2(38, 337)
+position = Vector2(38, 343)
 scale = Vector2(2.32, 2.32)
 collision_layer = 8
 script = ExtResource("19_5sgy6")
