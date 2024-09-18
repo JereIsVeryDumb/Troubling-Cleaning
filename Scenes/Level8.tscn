@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://dh7wmtga0u2my"]
+[gd_scene load_steps=67 format=3 uid="uid://dh7wmtga0u2my"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_err3m"]
 [ext_resource type="Texture2D" uid="uid://cwm1whtni0ofi" path="res://Assets/Background.png" id="2_8qeuf"]
@@ -181,6 +181,14 @@ size = Vector2(12.3029, 9.2914)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8egdp"]
 size = Vector2(56, 66.5)
+
+[sub_resource type="Curve" id="Curve_sp4wa"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_v7wss"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0loy"]
 font = ExtResource("5_lii8l")
@@ -2542,6 +2550,54 @@ scale = Vector2(1, 1.37)
 position = Vector2(436.364, 0)
 scale = Vector2(1, 2.375)
 shape = SubResource("RectangleShape2D_egckw")
+
+[node name="TrashParticles1" type="CPUParticles2D" parent="."]
+position = Vector2(253, 575)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_sp4wa")
+
+[node name="TrashParticles2" type="CPUParticles2D" parent="."]
+position = Vector2(45.9999, 173)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_sp4wa")
+
+[node name="TrashParticles3" type="CPUParticles2D" parent="."]
+position = Vector2(43, 402)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_v7wss")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

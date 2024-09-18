@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://cj3qhni2r7x74"]
+[gd_scene load_steps=64 format=3 uid="uid://cj3qhni2r7x74"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_sfj2g"]
 [ext_resource type="Texture2D" uid="uid://cwm1whtni0ofi" path="res://Assets/Background.png" id="2_x8ix8"]
@@ -179,6 +179,10 @@ size = Vector2(12.3029, 9.2914)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8egdp"]
 size = Vector2(56, 66.5)
+
+[sub_resource type="Curve" id="Curve_4pgrr"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0loy"]
 font = ExtResource("5_lt4l8")
@@ -1866,187 +1870,293 @@ scale = Vector2(0.372773, 0.372773)
 text = "Press \"E\" to sweep"
 label_settings = SubResource("LabelSettings_bwf34")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Ground7" type="Node2D" parent="."]
+position = Vector2(272, 137)
+scale = Vector2(0.11, 0.785)
 
-[node name="Thingscleaned" type="Label" parent="CanvasLayer"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Ground7"]
+collision_layer = 2
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground7/StaticBody2D"]
+position = Vector2(436.364, -4.64916e-06)
+shape = SubResource("RectangleShape2D_egckw")
+
+[node name="Floor" type="Node2D" parent="Ground7"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground7/Floor"]
 texture_filter = 1
-offset_left = 99.0
-offset_top = 28.0
-offset_right = 237.0
-offset_bottom = 52.0
-scale = Vector2(1.36, 1.36)
-text = "Things cleaned"
-label_settings = SubResource("LabelSettings_j0loy")
-metadata/_edit_use_anchors_ = true
+texture = ExtResource("14_84a5j")
 
-[node name="ObjectiveCount" type="Label" parent="CanvasLayer"]
-offset_left = 158.0
-offset_top = 52.0
-offset_right = 191.0
-offset_bottom = 76.0
-scale = Vector2(1.6, 1.6)
-text = " / 5"
-label_settings = SubResource("LabelSettings_xtq4w")
-metadata/_edit_use_anchors_ = true
-
-[node name="Timer" type="Timer" parent="CanvasLayer"]
-wait_time = 32.71
-
-[node name="Label" type="Label" parent="CanvasLayer"]
+[node name="Sprite2D2" type="Sprite2D" parent="Ground7/Floor"]
 texture_filter = 1
-offset_left = 279.0
-offset_right = 321.0
-offset_bottom = 23.0
-label_settings = SubResource("LabelSettings_pdrx1")
-metadata/_edit_use_anchors_ = true
+position = Vector2(16, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Ammo_Count" type="TextureProgressBar" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
-metadata/_edit_use_anchors_ = true
+[node name="Sprite2D3" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(32, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Ammo" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
-label_settings = SubResource("LabelSettings_iwtq8")
-metadata/_edit_use_anchors_ = true
+[node name="Sprite2D4" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(48, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="ReloadTimer" type="Timer" parent="CanvasLayer"]
-one_shot = true
+[node name="Sprite2D5" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(64, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="ReloadTimerLabel" type="Label" parent="CanvasLayer"]
-offset_left = 321.0
-offset_top = 521.0
-offset_right = 361.0
-offset_bottom = 544.0
-label_settings = SubResource("LabelSettings_ht7gk")
+[node name="Sprite2D6" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(80, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Pausemenu" type="VBoxContainer" parent="CanvasLayer"]
-process_mode = 3
-visible = false
-offset_left = 114.0
-offset_top = 73.0
-offset_right = 186.0
-offset_bottom = 393.0
-scale = Vector2(1.56263, 1.58788)
-alignment = 1
-script = ExtResource("21_1deaw")
+[node name="Sprite2D7" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(96, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Label" type="Label" parent="CanvasLayer/Pausemenu"]
-layout_mode = 2
-theme = SubResource("Theme_0mi72")
-text = "Paused"
-label_settings = SubResource("LabelSettings_16sfs")
+[node name="Sprite2D8" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(112, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Resume" type="Button" parent="CanvasLayer/Pausemenu"]
-layout_mode = 2
-focus_neighbor_bottom = NodePath("../Restart")
-icon = ExtResource("22_ydjrv")
+[node name="Sprite2D9" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(128, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Restart" type="Button" parent="CanvasLayer/Pausemenu"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../Resume")
-focus_neighbor_bottom = NodePath("../Settings")
-icon = ExtResource("23_j1x7p")
-icon_alignment = 1
+[node name="Sprite2D10" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(144, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Settings" type="Button" parent="CanvasLayer/Pausemenu"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../Restart")
-focus_neighbor_bottom = NodePath("../Quit")
-icon = ExtResource("24_voi6b")
+[node name="Sprite2D11" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(160, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Quit" type="Button" parent="CanvasLayer/Pausemenu"]
-layout_mode = 2
-focus_neighbor_top = NodePath("../Settings")
-icon = ExtResource("25_xk705")
+[node name="Sprite2D12" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(176, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="End" type="Control" parent="CanvasLayer"]
-visible = false
-layout_mode = 3
-anchors_preset = 0
-script = ExtResource("26_mgxy3")
+[node name="Sprite2D13" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(192, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="1 star header" type="Sprite2D" parent="CanvasLayer/End"]
-visible = false
-position = Vector2(180, 207)
-scale = Vector2(4.85187, 4.85187)
-texture = ExtResource("27_px7hg")
+[node name="Sprite2D14" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(208, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="2 star header" type="Sprite2D" parent="CanvasLayer/End"]
-visible = false
-position = Vector2(181, 207)
-scale = Vector2(4.85187, 4.85187)
-texture = ExtResource("28_g06j7")
+[node name="Sprite2D15" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(224, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="3 star header" type="Sprite2D" parent="CanvasLayer/End"]
-visible = false
-position = Vector2(181, 207)
-scale = Vector2(4.85187, 4.85187)
-texture = ExtResource("29_adddt")
+[node name="Sprite2D16" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(240, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="RestartStage" type="Button" parent="CanvasLayer/End"]
-layout_mode = 0
-offset_left = 39.0
-offset_top = 380.0
-offset_right = 102.0
-offset_bottom = 452.0
-scale = Vector2(1.445, 1.445)
-focus_neighbor_right = NodePath("../NextStage")
-theme_type_variation = &"FlatButton"
-theme_override_icons/icon = ExtResource("22_ydjrv")
-icon = ExtResource("23_j1x7p")
-flat = true
+[node name="Sprite2D17" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(257, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="NextStage" type="Button" parent="CanvasLayer/End"]
-layout_mode = 0
-offset_left = 142.0
-offset_top = 383.0
-offset_right = 214.0
-offset_bottom = 455.0
-scale = Vector2(1.445, 1.445)
-focus_neighbor_left = NodePath("../RestartStage")
-focus_neighbor_right = NodePath("../WorldSelect")
-theme_type_variation = &"FlatButton"
-theme_override_icons/icon = ExtResource("22_ydjrv")
-icon = ExtResource("30_ntj3h")
-flat = true
+[node name="Sprite2D18" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(273, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="WorldSelect" type="Button" parent="CanvasLayer/End"]
-layout_mode = 0
-offset_left = 257.0
-offset_top = 380.0
-offset_right = 320.0
-offset_bottom = 452.0
-scale = Vector2(1.445, 1.445)
-focus_neighbor_left = NodePath("../NextStage")
-theme_type_variation = &"FlatButton"
-theme_override_icons/icon = ExtResource("22_ydjrv")
-icon = ExtResource("31_0x0tu")
-flat = true
+[node name="Sprite2D19" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(289, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Scoreboard" type="Sprite2D" parent="CanvasLayer/End"]
-position = Vector2(180, 293)
-scale = Vector2(3.56, 3.36)
-texture = ExtResource("32_oxrng")
+[node name="Sprite2D20" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(305, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Current score" type="Label" parent="CanvasLayer/End"]
-layout_mode = 0
-offset_left = 16.0
-offset_top = 233.0
-offset_right = 131.0
-offset_bottom = 256.0
-text = "Current score : "
-label_settings = SubResource("LabelSettings_ht7gk")
+[node name="Sprite2D21" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(321, 0)
+texture = ExtResource("14_84a5j")
 
-[node name="Highscore" type="Label" parent="CanvasLayer/End"]
-layout_mode = 0
-offset_left = 15.0
-offset_top = 310.0
-offset_right = 137.0
-offset_bottom = 333.0
-text = "Personal best: "
-label_settings = SubResource("LabelSettings_ht7gk")
+[node name="Sprite2D22" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(337, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D23" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(353, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D24" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(369, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D25" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(385, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D26" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(401, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D27" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(417, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D28" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(433, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D29" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(449, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D30" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(465, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D31" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(481, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D32" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(497, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D33" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(513, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D34" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(529, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D35" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(545, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D36" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(561, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D37" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(577, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D38" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(593, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D39" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(609, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D40" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(626, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D41" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(642, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D42" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(658, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D43" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(674, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D44" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(690, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D45" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(706, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D46" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(722, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D47" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(738, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D48" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(754, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D49" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(770, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D50" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(786, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D51" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(802, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D52" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(818, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D53" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(834, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D54" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(850, 0)
+texture = ExtResource("14_84a5j")
+
+[node name="Sprite2D55" type="Sprite2D" parent="Ground7/Floor"]
+texture_filter = 1
+position = Vector2(866, 0)
+texture = ExtResource("14_84a5j")
 
 [node name="Ground6" type="Node2D" parent="."]
 position = Vector2(275, 383)
@@ -2337,293 +2447,219 @@ texture_filter = 1
 position = Vector2(866, 0)
 texture = ExtResource("14_84a5j")
 
-[node name="Ground7" type="Node2D" parent="."]
-position = Vector2(272, 137)
-scale = Vector2(0.11, 0.785)
+[node name="TrashParticles1" type="CPUParticles2D" parent="."]
+position = Vector2(255, 571)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_4pgrr")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Ground7"]
-collision_layer = 2
-collision_mask = 5
+[node name="TrashParticles2" type="CPUParticles2D" parent="."]
+position = Vector2(31.9999, 355)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_4pgrr")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground7/StaticBody2D"]
-position = Vector2(436.364, -4.64916e-06)
-shape = SubResource("RectangleShape2D_egckw")
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Floor" type="Node2D" parent="Ground7"]
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground7/Floor"]
+[node name="Thingscleaned" type="Label" parent="CanvasLayer"]
 texture_filter = 1
-texture = ExtResource("14_84a5j")
+offset_left = 99.0
+offset_top = 28.0
+offset_right = 237.0
+offset_bottom = 52.0
+scale = Vector2(1.36, 1.36)
+text = "Things cleaned"
+label_settings = SubResource("LabelSettings_j0loy")
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D2" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(16, 0)
-texture = ExtResource("14_84a5j")
+[node name="ObjectiveCount" type="Label" parent="CanvasLayer"]
+offset_left = 158.0
+offset_top = 52.0
+offset_right = 191.0
+offset_bottom = 76.0
+scale = Vector2(1.6, 1.6)
+text = " / 5"
+label_settings = SubResource("LabelSettings_xtq4w")
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D3" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(32, 0)
-texture = ExtResource("14_84a5j")
+[node name="Timer" type="Timer" parent="CanvasLayer"]
+wait_time = 32.71
 
-[node name="Sprite2D4" type="Sprite2D" parent="Ground7/Floor"]
+[node name="Label" type="Label" parent="CanvasLayer"]
 texture_filter = 1
-position = Vector2(48, 0)
-texture = ExtResource("14_84a5j")
+offset_left = 279.0
+offset_right = 321.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_pdrx1")
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D5" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(64, 0)
-texture = ExtResource("14_84a5j")
+[node name="Ammo_Count" type="TextureProgressBar" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D6" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(80, 0)
-texture = ExtResource("14_84a5j")
+[node name="Ammo" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_iwtq8")
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D7" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(96, 0)
-texture = ExtResource("14_84a5j")
+[node name="ReloadTimer" type="Timer" parent="CanvasLayer"]
+one_shot = true
 
-[node name="Sprite2D8" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(112, 0)
-texture = ExtResource("14_84a5j")
+[node name="ReloadTimerLabel" type="Label" parent="CanvasLayer"]
+offset_left = 321.0
+offset_top = 521.0
+offset_right = 361.0
+offset_bottom = 544.0
+label_settings = SubResource("LabelSettings_ht7gk")
 
-[node name="Sprite2D9" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(128, 0)
-texture = ExtResource("14_84a5j")
+[node name="Pausemenu" type="VBoxContainer" parent="CanvasLayer"]
+process_mode = 3
+visible = false
+offset_left = 114.0
+offset_top = 73.0
+offset_right = 186.0
+offset_bottom = 393.0
+scale = Vector2(1.56263, 1.58788)
+alignment = 1
+script = ExtResource("21_1deaw")
 
-[node name="Sprite2D10" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(144, 0)
-texture = ExtResource("14_84a5j")
+[node name="Label" type="Label" parent="CanvasLayer/Pausemenu"]
+layout_mode = 2
+theme = SubResource("Theme_0mi72")
+text = "Paused"
+label_settings = SubResource("LabelSettings_16sfs")
 
-[node name="Sprite2D11" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(160, 0)
-texture = ExtResource("14_84a5j")
+[node name="Resume" type="Button" parent="CanvasLayer/Pausemenu"]
+layout_mode = 2
+focus_neighbor_bottom = NodePath("../Restart")
+icon = ExtResource("22_ydjrv")
 
-[node name="Sprite2D12" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(176, 0)
-texture = ExtResource("14_84a5j")
+[node name="Restart" type="Button" parent="CanvasLayer/Pausemenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Resume")
+focus_neighbor_bottom = NodePath("../Settings")
+icon = ExtResource("23_j1x7p")
+icon_alignment = 1
 
-[node name="Sprite2D13" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(192, 0)
-texture = ExtResource("14_84a5j")
+[node name="Settings" type="Button" parent="CanvasLayer/Pausemenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Restart")
+focus_neighbor_bottom = NodePath("../Quit")
+icon = ExtResource("24_voi6b")
 
-[node name="Sprite2D14" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(208, 0)
-texture = ExtResource("14_84a5j")
+[node name="Quit" type="Button" parent="CanvasLayer/Pausemenu"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Settings")
+icon = ExtResource("25_xk705")
 
-[node name="Sprite2D15" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(224, 0)
-texture = ExtResource("14_84a5j")
+[node name="End" type="Control" parent="CanvasLayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("26_mgxy3")
 
-[node name="Sprite2D16" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(240, 0)
-texture = ExtResource("14_84a5j")
+[node name="1 star header" type="Sprite2D" parent="CanvasLayer/End"]
+visible = false
+position = Vector2(180, 207)
+scale = Vector2(4.85187, 4.85187)
+texture = ExtResource("27_px7hg")
 
-[node name="Sprite2D17" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(257, 0)
-texture = ExtResource("14_84a5j")
+[node name="2 star header" type="Sprite2D" parent="CanvasLayer/End"]
+visible = false
+position = Vector2(181, 207)
+scale = Vector2(4.85187, 4.85187)
+texture = ExtResource("28_g06j7")
 
-[node name="Sprite2D18" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(273, 0)
-texture = ExtResource("14_84a5j")
+[node name="3 star header" type="Sprite2D" parent="CanvasLayer/End"]
+visible = false
+position = Vector2(181, 207)
+scale = Vector2(4.85187, 4.85187)
+texture = ExtResource("29_adddt")
 
-[node name="Sprite2D19" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(289, 0)
-texture = ExtResource("14_84a5j")
+[node name="RestartStage" type="Button" parent="CanvasLayer/End"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 380.0
+offset_right = 102.0
+offset_bottom = 452.0
+scale = Vector2(1.445, 1.445)
+focus_neighbor_right = NodePath("../NextStage")
+theme_type_variation = &"FlatButton"
+theme_override_icons/icon = ExtResource("22_ydjrv")
+icon = ExtResource("23_j1x7p")
+flat = true
 
-[node name="Sprite2D20" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(305, 0)
-texture = ExtResource("14_84a5j")
+[node name="NextStage" type="Button" parent="CanvasLayer/End"]
+layout_mode = 0
+offset_left = 142.0
+offset_top = 383.0
+offset_right = 214.0
+offset_bottom = 455.0
+scale = Vector2(1.445, 1.445)
+focus_neighbor_left = NodePath("../RestartStage")
+focus_neighbor_right = NodePath("../WorldSelect")
+theme_type_variation = &"FlatButton"
+theme_override_icons/icon = ExtResource("22_ydjrv")
+icon = ExtResource("30_ntj3h")
+flat = true
 
-[node name="Sprite2D21" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(321, 0)
-texture = ExtResource("14_84a5j")
+[node name="WorldSelect" type="Button" parent="CanvasLayer/End"]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 380.0
+offset_right = 320.0
+offset_bottom = 452.0
+scale = Vector2(1.445, 1.445)
+focus_neighbor_left = NodePath("../NextStage")
+theme_type_variation = &"FlatButton"
+theme_override_icons/icon = ExtResource("22_ydjrv")
+icon = ExtResource("31_0x0tu")
+flat = true
 
-[node name="Sprite2D22" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(337, 0)
-texture = ExtResource("14_84a5j")
+[node name="Scoreboard" type="Sprite2D" parent="CanvasLayer/End"]
+position = Vector2(180, 293)
+scale = Vector2(3.56, 3.36)
+texture = ExtResource("32_oxrng")
 
-[node name="Sprite2D23" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(353, 0)
-texture = ExtResource("14_84a5j")
+[node name="Current score" type="Label" parent="CanvasLayer/End"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 233.0
+offset_right = 131.0
+offset_bottom = 256.0
+text = "Current score : "
+label_settings = SubResource("LabelSettings_ht7gk")
 
-[node name="Sprite2D24" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(369, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D25" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(385, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D26" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(401, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D27" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(417, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D28" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(433, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D29" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(449, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D30" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(465, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D31" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(481, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D32" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(497, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D33" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(513, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D34" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(529, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D35" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(545, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D36" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(561, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D37" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(577, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D38" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(593, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D39" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(609, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D40" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(626, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D41" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(642, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D42" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(658, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D43" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(674, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D44" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(690, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D45" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(706, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D46" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(722, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D47" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(738, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D48" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(754, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D49" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(770, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D50" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(786, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D51" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(802, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D52" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(818, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D53" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(834, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D54" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(850, 0)
-texture = ExtResource("14_84a5j")
-
-[node name="Sprite2D55" type="Sprite2D" parent="Ground7/Floor"]
-texture_filter = 1
-position = Vector2(866, 0)
-texture = ExtResource("14_84a5j")
+[node name="Highscore" type="Label" parent="CanvasLayer/End"]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 310.0
+offset_right = 137.0
+offset_bottom = 333.0
+text = "Personal best: "
+label_settings = SubResource("LabelSettings_ht7gk")
 
 [connection signal="body_entered" from="Trash1" to="Player" method="_on_trash_body_entered"]
 [connection signal="body_exited" from="Trash1" to="Player" method="_on_trash_body_exited"]

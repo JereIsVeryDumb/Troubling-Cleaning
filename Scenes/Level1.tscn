@@ -1512,18 +1512,6 @@ scale = Vector2(0.372773, 0.372773)
 text = "Press \"E\" to sweep"
 label_settings = SubResource("LabelSettings_bwf34")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Trash2"]
-amount = 1000
-explosiveness = 1.0
-fract_delta = false
-spread = 180.0
-gravity = Vector2(0, 0)
-initial_velocity_min = 50.0
-initial_velocity_max = 100.0
-scale_amount_min = 2.0
-scale_amount_max = 4.0
-scale_amount_curve = SubResource("Curve_y40ol")
-
 [node name="Trash3" type="Area2D" parent="."]
 position = Vector2(306, 447)
 scale = Vector2(2.32, 2.32)
@@ -1549,6 +1537,54 @@ offset_bottom = 6.75862
 scale = Vector2(0.372773, 0.372773)
 text = "Press \"E\" to sweep"
 label_settings = SubResource("LabelSettings_bwf34")
+
+[node name="TrashParticles1" type="CPUParticles2D" parent="."]
+position = Vector2(207, 572)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_y40ol")
+
+[node name="TrashParticles2" type="CPUParticles2D" parent="."]
+position = Vector2(50, 342)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_y40ol")
+
+[node name="TrashParticles3" type="CPUParticles2D" parent="."]
+position = Vector2(307, 457)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_y40ol")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

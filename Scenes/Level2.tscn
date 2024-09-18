@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dgto1om5o3kp7"]
+[gd_scene load_steps=62 format=3 uid="uid://dgto1om5o3kp7"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_u4idn"]
 [ext_resource type="Texture2D" uid="uid://cwm1whtni0ofi" path="res://Assets/Background.png" id="2_aarrq"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://Scripts/trash_2.gd" id="16_fnbbn"]
 [ext_resource type="Script" path="res://Scripts/trash_3.gd" id="17_fvm80"]
 [ext_resource type="Script" path="res://Scripts/pausemenu.gd" id="18_hklyq"]
+[ext_resource type="Texture2D" uid="uid://1fxprptuuaq0" path="res://Assets/jeres was here.png" id="18_w54yn"]
 [ext_resource type="Texture2D" uid="uid://bj11dmw6m858u" path="res://Assets/Playbutton.png" id="19_klmcd"]
 [ext_resource type="Texture2D" uid="uid://b7hnw55yi0b4p" path="res://Assets/RestartLevel.png" id="20_xesqv"]
 [ext_resource type="Texture2D" uid="uid://25n56j1kbhwq" path="res://Assets/Settings Button.png" id="21_3yxhy"]
@@ -176,6 +177,10 @@ size = Vector2(12.3029, 9.2914)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8egdp"]
 size = Vector2(56, 66.5)
+
+[sub_resource type="Curve" id="Curve_ivds3"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0loy"]
 font = ExtResource("5_pnc0p")
@@ -1822,6 +1827,59 @@ offset_bottom = 6.75862
 scale = Vector2(0.372773, 0.372773)
 text = "Press \"E\" to sweep"
 label_settings = SubResource("LabelSettings_bwf34")
+
+[node name="TrashParticles1" type="CPUParticles2D" parent="."]
+position = Vector2(207, 572)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_ivds3")
+
+[node name="TrashParticles2" type="CPUParticles2D" parent="."]
+position = Vector2(50, 342)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_ivds3")
+
+[node name="TrashParticles3" type="CPUParticles2D" parent="."]
+position = Vector2(293, 476)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_ivds3")
+
+[node name="JeresWasHere" type="Sprite2D" parent="."]
+position = Vector2(23, 571)
+scale = Vector2(1.2, 1.2)
+texture = ExtResource("18_w54yn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

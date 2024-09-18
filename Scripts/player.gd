@@ -17,9 +17,9 @@ extends CharacterBody2D
 @onready var interact_timer3 = $"../Trash3/TrashTimer"
 @onready var trash_timer_label3 = $"../Trash3/Trash_Timer_Label"
 @onready var trash_node3 = $"../Trash3"
-@onready var trash_particles = "pass"
-
-
+@onready var trash_particles1 = $"../TrashParticles1"
+@onready var trash_particles2 = $"../TrashParticles2"
+@onready var trash_particles3 = $"../TrashParticles3"
 
 
 
@@ -204,19 +204,21 @@ func _on_trash_timer_timeout() -> void:
 	trash_node.visible = false
 	can_shoot = true
 	GlobalVariables.objects += 1
-
+	trash_particles1.emitting = true
+	trash_particles1.visible = true
 
 func _on_trash_timer2_timeout() -> void:
 	GlobalVariables.speed = 350
 	GlobalVariables.jump_speed = -1200
 	interact_timer2.stop()
 	mop_animator.stop()
-	is_trash_interactive2 = false  
+	is_trash_interactive2 = false
 	trash_node2.visible = false
+	trash_particles2.emitting = true
+	trash_particles2.visible = true
 	can_shoot = true
 	GlobalVariables.objects += 1
-
-
+	
 func _on_trash2_body_entered(body: Node2D) -> void:
 	is_in_trash_area2 = true
 	trash_timer_label2.visible = true
@@ -236,6 +238,8 @@ func _on_trash_timer3_timeout() -> void:
 	trash_node3.visible = false
 	can_shoot = true
 	GlobalVariables.objects += 1
+	trash_particles3.emitting = true
+	trash_particles3.visible = true
 func _on_trash3_body_entered(body: Node2D) -> void:
 	is_in_trash_area3 = true
 	trash_timer_label3.visible = true

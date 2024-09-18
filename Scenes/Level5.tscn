@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://duoj46wm3skdo"]
+[gd_scene load_steps=65 format=3 uid="uid://duoj46wm3skdo"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_j27uk"]
 [ext_resource type="Texture2D" uid="uid://cwm1whtni0ofi" path="res://Assets/Background.png" id="2_kg3h8"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scripts/moving_ground.gd" id="18_mlm7b"]
 [ext_resource type="Script" path="res://Scripts/trash_2.gd" id="19_2oxx8"]
 [ext_resource type="Script" path="res://Scripts/trash_3.gd" id="20_0j8v6"]
+[ext_resource type="Texture2D" uid="uid://bs6dp0utfj6jl" path="res://Assets/Nyrikki.png" id="21_3pqef"]
 [ext_resource type="Script" path="res://Scripts/pausemenu.gd" id="21_t3p0n"]
 [ext_resource type="Texture2D" uid="uid://bj11dmw6m858u" path="res://Assets/Playbutton.png" id="22_6irex"]
 [ext_resource type="Texture2D" uid="uid://b7hnw55yi0b4p" path="res://Assets/RestartLevel.png" id="23_uhoip"]
@@ -179,6 +180,10 @@ size = Vector2(12.3029, 9.2914)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8egdp"]
 size = Vector2(56, 66.5)
+
+[sub_resource type="Curve" id="Curve_0t8x7"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="LabelSettings" id="LabelSettings_j0loy"]
 font = ExtResource("5_j81hm")
@@ -1865,6 +1870,44 @@ offset_bottom = 6.75862
 scale = Vector2(0.372773, 0.372773)
 text = "Press \"E\" to sweep"
 label_settings = SubResource("LabelSettings_bwf34")
+
+[node name="TrashParticles1" type="CPUParticles2D" parent="."]
+position = Vector2(144, 575)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_0t8x7")
+
+[node name="TrashParticles2" type="CPUParticles2D" parent="."]
+position = Vector2(257, 572)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_0t8x7")
+
+[node name="Nyrikki" type="Sprite2D" parent="."]
+position = Vector2(3, 606)
+scale = Vector2(0.0690012, 0.0690012)
+skew = 0.349066
+texture = ExtResource("21_3pqef")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c8bplmvxq0ea2"]
+[gd_scene load_steps=67 format=3 uid="uid://c8bplmvxq0ea2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_xfqbj"]
 [ext_resource type="Texture2D" uid="uid://iv3ue666cty" path="res://Assets/boot.png" id="2_nog17"]
@@ -217,6 +217,14 @@ font = ExtResource("5_e4sec")
 font_size = 19
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_erqb2"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_bef00"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.010989), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [node name="Level10" type="Node2D"]
 position = Vector2(1, 0)
@@ -624,7 +632,7 @@ position = Vector2(866, 0)
 texture = ExtResource("14_vd7xq")
 
 [node name="Hottub" type="Area2D" parent="."]
-position = Vector2(-7.62939e-06, 3.8147e-06)
+position = Vector2(4.54747e-12, 2)
 
 [node name="Sprite2D" type="Sprite2D" parent="Hottub"]
 texture_filter = 1
@@ -3244,6 +3252,54 @@ offset_right = 137.0
 offset_bottom = 333.0
 text = "Personal best: "
 label_settings = SubResource("LabelSettings_ht7gk")
+
+[node name="TrashParticles1" type="CPUParticles2D" parent="."]
+position = Vector2(253, 575)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_erqb2")
+
+[node name="TrashParticles2" type="CPUParticles2D" parent="."]
+position = Vector2(36, 346)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_erqb2")
+
+[node name="TrashParticles3" type="CPUParticles2D" parent="."]
+position = Vector2(43, 402)
+scale = Vector2(2.32, 2.32)
+emitting = false
+amount = 60
+one_shot = true
+explosiveness = 1.0
+fract_delta = false
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_bef00")
 
 [connection signal="body_entered" from="Trash1" to="Player" method="_on_trash_body_entered"]
 [connection signal="body_exited" from="Trash1" to="Player" method="_on_trash_body_exited"]
