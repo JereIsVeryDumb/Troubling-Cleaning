@@ -1872,7 +1872,7 @@ text = "Press \"E\" to sweep"
 label_settings = SubResource("LabelSettings_bwf34")
 
 [node name="TrashParticles1" type="CPUParticles2D" parent="."]
-position = Vector2(144, 575)
+position = Vector2(256, 575)
 scale = Vector2(2.32, 2.32)
 emitting = false
 amount = 60
@@ -1888,7 +1888,7 @@ scale_amount_max = 4.0
 scale_amount_curve = SubResource("Curve_0t8x7")
 
 [node name="TrashParticles2" type="CPUParticles2D" parent="."]
-position = Vector2(257, 572)
+position = Vector2(145, 578)
 scale = Vector2(2.32, 2.32)
 emitting = false
 amount = 60
