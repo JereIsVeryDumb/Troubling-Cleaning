@@ -32,6 +32,7 @@ var is_trash_interactive = true  # Flag to control if the trash is interactive
 var is_trash_interactive2 = true
 var is_trash_interactive3 = true
 var can_shoot = true
+var can_jump = true
 @onready var bullet_spawn_sprite = $Mop/Marker2D
 
 @onready var screensize = get_viewport_rect().size
@@ -79,6 +80,7 @@ func _physics_process(delta):
 		trash_timer_label.position.x = 1
 		is_trash_interactive = false
 		can_shoot = false
+		can_jump = false
 		print("jessus")
 		if current_direction == _direction.RIGHT:
 			mop_animator.play("Mopping")
@@ -97,6 +99,7 @@ func _physics_process(delta):
 		interact_timer2.start(5.1)
 		trash_timer_label2.position.x = 1
 		is_trash_interactive2 = false
+		can_jump = false
 		can_shoot = false
 		if current_direction == _direction.RIGHT:
 			mop_animator.play("Mopping")
@@ -111,6 +114,7 @@ func _physics_process(delta):
 		trash_timer_label3.position.x = 1
 		is_trash_interactive3 = false
 		can_shoot = false
+		can_jump = false
 		if current_direction == _direction.RIGHT:
 			mop_animator.play("Mopping")
 		elif current_direction == _direction.LEFT:
@@ -141,8 +145,9 @@ func _physics_process(delta):
 
 	move_and_slide()
 
-	if Input.is_action_just_pressed("Jump") and is_on_floor():
+	if Input.is_action_just_pressed("Jump") and is_on_floor() and can_jump == true:
 		velocity.y = GlobalVariables.jump_speed
+		$JumpSound.play()
 
 	if Input.is_action_just_pressed("Shoot") and ammo > 0 and can_shoot == true:
 		shoot()
@@ -203,6 +208,7 @@ func _on_trash_timer_timeout() -> void:
 	is_trash_interactive = false  
 	trash_node.visible = false
 	can_shoot = true
+	can_jump = true
 	GlobalVariables.objects += 1
 	trash_particles1.emitting = true
 	trash_particles1.visible = true
@@ -217,6 +223,7 @@ func _on_trash_timer2_timeout() -> void:
 	trash_particles2.emitting = true
 	trash_particles2.visible = true
 	can_shoot = true
+	can_jump = true
 	GlobalVariables.objects += 1
 	
 func _on_trash2_body_entered(body: Node2D) -> void:
@@ -237,6 +244,7 @@ func _on_trash_timer3_timeout() -> void:
 	is_trash_interactive3 = false  
 	trash_node3.visible = false
 	can_shoot = true
+	can_jump = true
 	GlobalVariables.objects += 1
 	trash_particles3.emitting = true
 	trash_particles3.visible = true

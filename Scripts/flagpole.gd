@@ -10,7 +10,6 @@ extends Area2D
 @onready var two_star = $"../CanvasLayer/End/2 star header"
 @onready var three_star = $"../CanvasLayer/End/3 star header"
 @onready var objectivecount = $"../CanvasLayer/ObjectiveCount"
-
 signal timer_stop
 
 var star_count = 0  # Default to 0 stars
@@ -50,10 +49,9 @@ func _ready() -> void:
 
 		print("High Score:", high_score)
 		print("Star Count:", star_count)
-
+	
 	update_required_objects()
 	update_star_visibility()
-
 func extract_level_number_from_scene_name() -> int:
 	var current_scene = get_tree().current_scene
 	if current_scene:
@@ -83,7 +81,6 @@ func update_star_visibility():
 
 func _process(delta: float) -> void:
 	objectivecount.text = str(GlobalVariables.objects) + " / " + str(required_objects)
-
 func _on_body_entered(body: Node2D) -> void:
 	update_required_objects()  # Ensure required_objects is set correctly
 

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kgwfrhvvlpxd"]
+
+[ext_resource type="AudioStream" uid="uid://b0182003pjrac" path="res://Assets/8-BIT Adventure - Bitstream Race (Loopable).mp3" id="1_t7fki"]
+
+[node name="LevelMusic" type="AudioStreamPlayer"]
+stream = ExtResource("1_t7fki")

@@ -446,7 +446,7 @@ scale = Vector2(1.77825, 1.77825)
 text = "10"
 label_settings = SubResource("LabelSettings_nxxnc")
 
-[node name="Level10Starcount" type="Label" parent="Level10Button"]
+[node name="Level10StarCount" type="Label" parent="Level10Button"]
 layout_mode = 0
 offset_left = 17.7886
 offset_top = 58.6164

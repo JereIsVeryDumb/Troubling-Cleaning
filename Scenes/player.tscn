@@ -1,10 +1,11 @@
-[gd_scene load_steps=19 format=3 uid="uid://25vbvdnhq60m"]
+[gd_scene load_steps=20 format=3 uid="uid://25vbvdnhq60m"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_eafjl"]
 [ext_resource type="Texture2D" uid="uid://bypyfdsjqq77q" path="res://Assets/pllayer.png" id="2_l5cp8"]
 [ext_resource type="Texture2D" uid="uid://cf4yqibgw735t" path="res://Assets/playerframe2.png" id="3_ktokm"]
 [ext_resource type="Texture2D" uid="uid://hvuts6hq0dis" path="res://Assets/Brush Mop.png" id="3_pvjcw"]
 [ext_resource type="Texture2D" uid="uid://ddb0ctxgmyfeu" path="res://Assets/playerframe1.png" id="4_ywq66"]
+[ext_resource type="AudioStream" uid="uid://dbd2pd4ivk3p5" path="res://Assets/Jump sound effect.mp3" id="6_vv17u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_onbm2"]
 size = Vector2(66, 70)
@@ -216,3 +217,7 @@ position = Vector2(4.05405, 5.74324)
 libraries = {
 "": SubResource("AnimationLibrary_dbn4f")
 }
+
+[node name="JumpSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_vv17u")
+volume_db = -11.243

@@ -9,7 +9,7 @@ var current_level: String = "res://Scenes/Level1.tscn"
 var friction = 0.265
 var highest_level_unlocked: int = 1
 var level_number: int = 1  # Add this to store the current level number
-
+var is_music_playing = false
 var current_scene_path: String = ""
 
 # Path for the save file

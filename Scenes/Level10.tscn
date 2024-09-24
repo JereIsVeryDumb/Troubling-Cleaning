@@ -3192,9 +3192,9 @@ texture = ExtResource("31_mhp01")
 
 [node name="RestartStage" type="Button" parent="CanvasLayer/End"]
 layout_mode = 0
-offset_left = 39.0
+offset_left = 94.0
 offset_top = 380.0
-offset_right = 102.0
+offset_right = 157.0
 offset_bottom = 452.0
 scale = Vector2(1.445, 1.445)
 focus_neighbor_right = NodePath("../NextStage")
@@ -3204,6 +3204,7 @@ icon = ExtResource("25_vtot8")
 flat = true
 
 [node name="NextStage" type="Button" parent="CanvasLayer/End"]
+visible = false
 layout_mode = 0
 offset_left = 142.0
 offset_top = 383.0
@@ -3219,9 +3220,9 @@ flat = true
 
 [node name="WorldSelect" type="Button" parent="CanvasLayer/End"]
 layout_mode = 0
-offset_left = 257.0
+offset_left = 210.0
 offset_top = 380.0
-offset_right = 320.0
+offset_right = 273.0
 offset_bottom = 452.0
 scale = Vector2(1.445, 1.445)
 focus_neighbor_left = NodePath("../NextStage")
