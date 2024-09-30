@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://b5vt7msbv4la4"]
+[gd_scene load_steps=64 format=3 uid="uid://b5vt7msbv4la4"]
 
 [ext_resource type="PackedScene" uid="uid://25vbvdnhq60m" path="res://Scenes/player.tscn" id="1_5njv3"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_aj0km"]
@@ -25,11 +25,13 @@
 [ext_resource type="Texture2D" uid="uid://cjf01cxll5bnw" path="res://Assets/1 Star header.png" id="18_aux44"]
 [ext_resource type="Script" path="res://Scripts/end.gd" id="18_xtwa8"]
 [ext_resource type="Texture2D" uid="uid://df0r6pf47r0i3" path="res://Assets/2 Star header.png" id="19_fcced"]
+[ext_resource type="Texture2D" uid="uid://sae58085lhw" path="res://Assets/AmmoCount art full.png" id="19_ubdte"]
 [ext_resource type="Texture2D" uid="uid://bh0kd68rgqq4l" path="res://Assets/3 star header.png" id="20_bccy0"]
 [ext_resource type="Script" path="res://Scripts/trash_2.gd" id="20_to46h"]
 [ext_resource type="Texture2D" uid="uid://0xbitj2j0u70" path="res://Assets/Next stage.png" id="22_lgf4w"]
 [ext_resource type="Texture2D" uid="uid://yk8l6hpenxh3" path="res://Assets/World Select button.png" id="24_f07u5"]
 [ext_resource type="Texture2D" uid="uid://btckiorxptdqj" path="res://Assets/Scoreboard.png" id="25_4gtkq"]
+[ext_resource type="PackedScene" uid="uid://dqotnb3ved25e" path="res://Scenes/options_menu.tscn" id="25_fwihv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6km6g"]
 size = Vector2(27.5862, 19)
@@ -1617,13 +1619,16 @@ offset_right = 321.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_pdrx1")
 
-[node name="Ammo_Count" type="TextureProgressBar" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="AmmoCount" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(54, 31)
+scale = Vector2(7.32, 7.32)
+texture = ExtResource("19_ubdte")
 
 [node name="Ammo" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 45.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 30.0
 label_settings = SubResource("LabelSettings_iwtq8")
 
 [node name="ReloadTimer" type="Timer" parent="CanvasLayer"]
@@ -1675,6 +1680,18 @@ icon = ExtResource("13_d3qby")
 layout_mode = 2
 focus_neighbor_top = NodePath("../Settings")
 icon = ExtResource("14_64wqw")
+
+[node name="Options_Menu" parent="CanvasLayer" instance=ExtResource("25_fwihv")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 76.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="End" type="Control" parent="CanvasLayer"]
 visible = false

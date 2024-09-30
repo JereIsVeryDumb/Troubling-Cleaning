@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dgto1om5o3kp7"]
+[gd_scene load_steps=64 format=3 uid="uid://dgto1om5o3kp7"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_u4idn"]
 [ext_resource type="Texture2D" uid="uid://cwm1whtni0ofi" path="res://Assets/Background.png" id="2_aarrq"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://Scripts/trash_3.gd" id="17_fvm80"]
 [ext_resource type="Script" path="res://Scripts/pausemenu.gd" id="18_hklyq"]
 [ext_resource type="Texture2D" uid="uid://1fxprptuuaq0" path="res://Assets/jeres was here.png" id="18_w54yn"]
+[ext_resource type="Texture2D" uid="uid://sae58085lhw" path="res://Assets/AmmoCount art full.png" id="19_8wr6q"]
 [ext_resource type="Texture2D" uid="uid://bj11dmw6m858u" path="res://Assets/Playbutton.png" id="19_klmcd"]
 [ext_resource type="Texture2D" uid="uid://b7hnw55yi0b4p" path="res://Assets/RestartLevel.png" id="20_xesqv"]
 [ext_resource type="Texture2D" uid="uid://25n56j1kbhwq" path="res://Assets/Settings Button.png" id="21_3yxhy"]
@@ -26,6 +27,7 @@
 [ext_resource type="Script" path="res://Scripts/end.gd" id="23_gp217"]
 [ext_resource type="Texture2D" uid="uid://cjf01cxll5bnw" path="res://Assets/1 Star header.png" id="24_7kapr"]
 [ext_resource type="Texture2D" uid="uid://df0r6pf47r0i3" path="res://Assets/2 Star header.png" id="25_f055a"]
+[ext_resource type="PackedScene" uid="uid://dqotnb3ved25e" path="res://Scenes/options_menu.tscn" id="25_mpy1l"]
 [ext_resource type="Texture2D" uid="uid://bh0kd68rgqq4l" path="res://Assets/3 star header.png" id="26_0v002"]
 [ext_resource type="Texture2D" uid="uid://0xbitj2j0u70" path="res://Assets/Next stage.png" id="27_qhlv8"]
 [ext_resource type="Texture2D" uid="uid://yk8l6hpenxh3" path="res://Assets/World Select button.png" id="28_amtg2"]
@@ -1912,13 +1914,16 @@ offset_right = 321.0
 offset_bottom = 23.0
 label_settings = SubResource("LabelSettings_pdrx1")
 
-[node name="Ammo_Count" type="TextureProgressBar" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="AmmoCount" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(54, 31)
+scale = Vector2(7.32, 7.32)
+texture = ExtResource("19_8wr6q")
 
 [node name="Ammo" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 45.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 30.0
 label_settings = SubResource("LabelSettings_iwtq8")
 
 [node name="ReloadTimer" type="Timer" parent="CanvasLayer"]
@@ -1970,6 +1975,18 @@ icon = ExtResource("21_3yxhy")
 layout_mode = 2
 focus_neighbor_top = NodePath("../Settings")
 icon = ExtResource("22_mwus2")
+
+[node name="Options_Menu" parent="CanvasLayer" instance=ExtResource("25_mpy1l")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 76.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="End" type="Control" parent="CanvasLayer"]
 visible = false

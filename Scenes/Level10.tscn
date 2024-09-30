@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://c8bplmvxq0ea2"]
+[gd_scene load_steps=69 format=3 uid="uid://c8bplmvxq0ea2"]
 
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_xfqbj"]
 [ext_resource type="Texture2D" uid="uid://iv3ue666cty" path="res://Assets/boot.png" id="2_nog17"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" path="res://Scripts/moving_ground.gd" id="20_u2jpp"]
 [ext_resource type="Script" path="res://Scripts/trash_2.gd" id="21_katgd"]
 [ext_resource type="Script" path="res://Scripts/trash_3.gd" id="22_ffv5k"]
+[ext_resource type="Texture2D" uid="uid://sae58085lhw" path="res://Assets/AmmoCount art full.png" id="23_3g4gb"]
 [ext_resource type="Script" path="res://Scripts/pausemenu.gd" id="23_obnxx"]
 [ext_resource type="Texture2D" uid="uid://bj11dmw6m858u" path="res://Assets/Playbutton.png" id="24_pk2hl"]
 [ext_resource type="Texture2D" uid="uid://b7hnw55yi0b4p" path="res://Assets/RestartLevel.png" id="25_vtot8"]
@@ -29,6 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://bi7hol7fhs3se" path="res://Assets/Quit.png" id="27_f0fpe"]
 [ext_resource type="Script" path="res://Scripts/end.gd" id="28_rpoxf"]
 [ext_resource type="Texture2D" uid="uid://cjf01cxll5bnw" path="res://Assets/1 Star header.png" id="29_a5gnr"]
+[ext_resource type="PackedScene" uid="uid://dqotnb3ved25e" path="res://Scenes/options_menu.tscn" id="29_xgtet"]
 [ext_resource type="Texture2D" uid="uid://df0r6pf47r0i3" path="res://Assets/2 Star header.png" id="30_hn5kn"]
 [ext_resource type="Texture2D" uid="uid://bh0kd68rgqq4l" path="res://Assets/3 star header.png" id="31_mhp01"]
 [ext_resource type="Texture2D" uid="uid://0xbitj2j0u70" path="res://Assets/Next stage.png" id="32_4jsn2"]
@@ -3110,9 +3112,16 @@ offset_right = 40.0
 offset_bottom = 40.0
 metadata/_edit_use_anchors_ = true
 
+[node name="AmmoCount" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(54, 31)
+scale = Vector2(7.32, 7.32)
+texture = ExtResource("23_3g4gb")
+
 [node name="Ammo" type="Label" parent="CanvasLayer"]
-offset_right = 40.0
-offset_bottom = 23.0
+offset_left = 45.0
+offset_top = 6.0
+offset_right = 85.0
+offset_bottom = 30.0
 label_settings = SubResource("LabelSettings_iwtq8")
 metadata/_edit_use_anchors_ = true
 
@@ -3165,6 +3174,18 @@ icon = ExtResource("26_hx3i3")
 layout_mode = 2
 focus_neighbor_top = NodePath("../Settings")
 icon = ExtResource("27_f0fpe")
+
+[node name="Options_Menu" parent="CanvasLayer" instance=ExtResource("29_xgtet")]
+visible = false
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 76.0
+grow_horizontal = 1
+grow_vertical = 1
 
 [node name="End" type="Control" parent="CanvasLayer"]
 visible = false

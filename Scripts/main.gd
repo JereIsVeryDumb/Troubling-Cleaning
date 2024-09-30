@@ -7,6 +7,7 @@ extends Node2D
 @onready var flagpole = $Flagpole
 
 func _ready() -> void:
+	GlobalVariables.load_game_data()
 	timer.start()
 	if flagpole:
 		print("Connecting to Flagpole's timer_stop signal")

@@ -221,3 +221,4 @@ libraries = {
 [node name="JumpSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_vv17u")
 volume_db = -11.243
+bus = &"Sound Effects"

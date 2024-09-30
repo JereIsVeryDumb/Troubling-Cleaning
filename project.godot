@@ -18,6 +18,7 @@ config/features=PackedStringArray("4.3", "Mobile")
 
 GlobalVariables="*res://Scripts/Global Variables.gd"
 GlobalSignals="*res://Scripts/GlobalSignals.gd"
+LevelMusic="*res://Scenes/level_music.tscn"
 
 [display]
 

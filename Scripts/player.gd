@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export_range(0.0, 1.0) var acceleration = 0.12
 @export var bullet_scene = preload("res://Scenes/bullet.tscn") as PackedScene
 @onready var ammo_count = $"../CanvasLayer/Ammo"
+@onready var ammo_display = $"../CanvasLayer/AmmoCount"
 @onready var reload_timer = $"../CanvasLayer/ReloadTimer"
 @onready var reload_label = $"../CanvasLayer/ReloadTimerLabel"
 @onready var mop_animator = $Mop/AnimationPlayer
@@ -21,9 +22,11 @@ extends CharacterBody2D
 @onready var trash_particles2 = $"../TrashParticles2"
 @onready var trash_particles3 = $"../TrashParticles3"
 
-
-
-
+# Preload textures for ammo display
+var ammo_full_texture = preload("res://Assets/AmmoCount art full.png")
+var ammo_one_missing_texture = preload("res://Assets/AmmoCount art 1 missing.png")
+var ammo_two_missing_texture = preload("res://Assets/AmmoCount art 2 missing.png")
+var no_ammo_texture = preload("res://Assets/No ammo.png")
 
 var is_in_trash_area = false
 var is_in_trash_area2 = false
@@ -41,7 +44,13 @@ var upndown = Input.get_axis("Lookup", "Aimdown")
 
 func _ready():
 	start()
-	ammo_count.text = str(ammo)
+	
+	# Ensure that ammo_display is not null
+	if ammo_display == null:
+		print("Warning: ammo_display is null!")
+	else:
+		ammo_count.text = str(ammo)
+	
 	reload_timer.connect("timeout", Callable(self, "_on_reload_timer_timeout"))
 	interact_timer.connect("timeout", Callable(self, "_on_trash_timer_timeout"))
 	trash_timer_label.visible = false
@@ -49,9 +58,9 @@ func _ready():
 	trash_timer_label2.visible = false
 	interact_timer3.connect("timeout", Callable(self, "_on_trash_timer3_timeout"))
 	trash_timer_label3.visible = false
-	
+
 func start():
-	position = Vector2(28,28)
+	position = Vector2(28, 28)
 
 enum _direction { LEFT = -1, RIGHT = 1, UP = -2, DOWN = 2 }
 
@@ -72,6 +81,7 @@ func _physics_process(delta):
 		trash_timer_label2.text = '%02d' % int(ceil(interact_timer2.time_left))
 	if interact_timer3.is_stopped() == false:
 		trash_timer_label3.text = '%02d' % int(ceil(interact_timer3.time_left))
+	
 	if is_in_trash_area and is_trash_interactive and Input.is_action_pressed("Interact"):
 		GlobalVariables.speed = 0
 		GlobalVariables.jump_speed = 0
@@ -81,16 +91,23 @@ func _physics_process(delta):
 		is_trash_interactive = false
 		can_shoot = false
 		can_jump = false
-		print("jessus")
 		if current_direction == _direction.RIGHT:
 			mop_animator.play("Mopping")
 		elif current_direction == _direction.LEFT:
 			mop_animator.play("Mopping_left")
 			
-			
-			
-			
-			
+	# Safely check if ammo_display is not null before assigning texture
+	if ammo_display != null:
+		if ammo == 3:
+			ammo_display.texture = ammo_full_texture
+		elif ammo == 2:
+			ammo_display.texture = ammo_one_missing_texture
+		elif ammo == 1:
+			ammo_display.texture = ammo_two_missing_texture
+		elif ammo == 0:
+			ammo_display.texture = no_ammo_texture
+	else:
+		print("Cannot update ammo display: ammo_display is null!")
 	
 	if is_in_trash_area2 and is_trash_interactive2 and Input.is_action_pressed("Interact"):
 		GlobalVariables.speed = 0
@@ -119,8 +136,6 @@ func _physics_process(delta):
 			mop_animator.play("Mopping")
 		elif current_direction == _direction.LEFT:
 			mop_animator.play("Mopping_left")
-	
-	
 	
 	var s = reload_timer.time_left
 	reload_label.text = '%02d' % [s]
@@ -151,7 +166,7 @@ func _physics_process(delta):
 
 	if Input.is_action_just_pressed("Shoot") and ammo > 0 and can_shoot == true:
 		shoot()
-	
+
 func shoot():
 	var b = bullet_scene.instantiate() as Area2D
 	get_tree().root.add_child(b)

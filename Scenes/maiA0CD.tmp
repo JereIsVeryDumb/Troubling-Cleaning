@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cndwqtpo0d0sl"]
+[gd_scene load_steps=10 format=3 uid="uid://cndwqtpo0d0sl"]
 
 [ext_resource type="Script" path="res://Scripts/main_menu.gd" id="1_tb0kk"]
 [ext_resource type="Texture2D" uid="uid://bj11dmw6m858u" path="res://Assets/Playbutton.png" id="2_6slwk"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ckhed5dejcj4p" path="res://Assets/Tutorial button .png" id="4_44q4u"]
 [ext_resource type="Texture2D" uid="uid://25n56j1kbhwq" path="res://Assets/Settings Button.png" id="4_hwh7c"]
 [ext_resource type="Texture2D" uid="uid://bi7hol7fhs3se" path="res://Assets/Quit.png" id="6_amhrj"]
-[ext_resource type="PackedScene" uid="uid://dqotnb3ved25e" path="res://Scenes/options_menu.tscn" id="8_gbdjw"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_fyo21"]
 font = ExtResource("3_sc6ni")
@@ -85,18 +84,5 @@ theme = SubResource("Theme_mof45")
 icon = ExtResource("6_amhrj")
 flat = true
 
-[node name="Options_Menu" parent="." instance=ExtResource("8_gbdjw")]
-visible = false
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = -5.0
-offset_top = 4.0
-offset_right = -5.0
-offset_bottom = 76.0
-
-[connection signal="pressed" from="TutorialButton" to="." method="_on_tutorial_button_pressed"]
-[connection signal="pressed" from="HBoxContainer/Settingsbutton" to="." method="_on_settingsbutton_pressed"]
 [connection signal="pressed" from="HBoxContainer/Playbutton" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/Quit" to="." method="_on_quit_pressed"]

@@ -31,7 +31,7 @@ func _on_restart_pressed() -> void:
 	GlobalVariables.jump_speed = -1200
 
 func _on_settings_pressed() -> void:
-	pass  # Implement settings functionality here
+	$"../Options_Menu".visible = true
 
 func _on_quit_pressed() -> void:
 	_is_paused = false
